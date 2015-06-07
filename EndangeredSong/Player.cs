@@ -81,7 +81,7 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-            if(!this.isHid)
+            if(!this.isHid && !isDead)
                 sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
 
@@ -136,6 +136,16 @@ namespace EndangeredSong
                     }
                 }
             }
+        }
+        public void deadHarmonians(BIOAgent b, ArrayList harmonians)
+        {
+            for (int i = 0; i < harmonians.Count; i++)
+                if (((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid()
+                    && (!((Harmonian)harmonians[i]).getDead())
+                    && b.getRect().Intersects(((Harmonian)harmonians[i]).getRect()))
+                {
+                    ((Harmonian)harmonians[i]).Die();
+                }
         }
 
         public void Die()

@@ -24,7 +24,7 @@ namespace EndangeredSong
         Camera camera;
         MiniMap map;
 
-
+        ArrayList foundHarmonians;
         ArrayList harmonians;
         ArrayList hidingPlaces;
         ArrayList decorations;
@@ -70,6 +70,7 @@ namespace EndangeredSong
             dimX = GraphicsDevice.Viewport.Bounds.Width;
             dimY = GraphicsDevice.Viewport.Bounds.Height;
 
+            foundHarmonians = new ArrayList();
             harmonians = new ArrayList();
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
@@ -126,9 +127,9 @@ namespace EndangeredSong
 
             song1 = Content.Load<SoundEffect>(@"1Music");
 
-            var songInstance = song1.CreateInstance();
-            songInstance.IsLooped = true;
-            songInstance.Play();
+//            var songInstance = song1.CreateInstance();
+//            songInstance.IsLooped = true;
+//            songInstance.Play();
                 
             base.Initialize();
         }
@@ -182,7 +183,13 @@ namespace EndangeredSong
                 for (int i = 0; i < hidingPlaces.Count; i++)
                     ((HidingPlace)hidingPlaces[i]).Update(controls, gameTime, player, harmonians);
                 for (int k = 0; k < harmonians.Count; k++)
+                {
                     ((Harmonian)harmonians[k]).Update(controls, gameTime, player);
+                    if (((Harmonian)harmonians[k]).getFound())
+                    {
+                        foundHarmonians.Add((Harmonian)harmonians[k]);
+                    }
+                }
 
                 b1.Update(controls, gameTime, player, harmonians);
                 player.Update(controls, gameTime);

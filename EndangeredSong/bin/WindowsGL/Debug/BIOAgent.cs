@@ -76,27 +76,15 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
-            Rectangle r;
 
-            for (int i = 0; i < harmonians.Count; i++)  //loops through harmonian and checks for death of found, unhidden harmonians
+            Rectangle r = player.getRect();
+            Console.WriteLine("Player rect intersects with bio agent rect " + getRect().Intersects(r));
+            if (this.isActive && this.getRect().Intersects(r)) //if bioAgents rect intersects with player rect    
             {
-
-                r = ((Harmonian)harmonians[i]).getRect();
-
-                if (this.getRect().Intersects(r) && ((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid())
-                {
-                    //((Harmonian)harmonians[i]).Die();
-                    //Debug.WriteLine("HARMONIAN DEATH");
-                }
-            }
-
-            //checks for player death
-            r = player.getRect();
-            if (this.getRect().Intersects(r))
-            {                  
-                //player.Die();
-                //Debug.WriteLine("PLAYER DEATH");
-            }            
+                player.Die();
+                Console.WriteLine("RECT INTERSECTION");
+                player.deadHarmonians(this, harmonians);
+            }         
             Move(controls, player);
         }
 
