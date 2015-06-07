@@ -87,7 +87,10 @@ namespace EndangeredSong
 
         public void Update(Controls controls, GameTime gameTime)
         {
-            Move(controls);
+            if (!isDead)
+            {
+                Move(controls);
+            }
         }
 
         public void HideHarmonians(HidingPlace h, ArrayList harmonians)
