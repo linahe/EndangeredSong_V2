@@ -92,7 +92,12 @@
     <Content Include="Content\BIOAgentConceptArt.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Content\BIOAgentConceptArt2.png" />
+    <Content Include="Content\BIOAgentConceptArt2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\BIOAgentConceptArt3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\BIOAgentConceptArtSpriteSheet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

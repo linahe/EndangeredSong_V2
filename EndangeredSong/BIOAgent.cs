@@ -18,7 +18,14 @@ namespace EndangeredSong
 	    int maxX;
         int maxY;
         bool isActive;
-        int frameRate;
+        
+        float frameRate = 0.10f;
+        const float timer = 0.10f;
+        int frames = 0;
+        const int FRAMES = 3;
+        Texture2D frame1;
+        Texture2D frame2;
+        Texture2D frame3;
 
         public BIOAgent(int x, int y, int width, int height, int maxX, int maxY)
 	    {
@@ -49,7 +56,9 @@ namespace EndangeredSong
         }
         public void LoadContent(ContentManager content)
         {
-            image = content.Load<Texture2D>("sprite.gif");
+            frame1 = content.Load<Texture2D>("BIOAgentConceptArt.png");
+            frame2 = content.Load<Texture2D>("BIOAgentConceptArt3.png");
+            frame3 = content.Load<Texture2D>("BIOAgentConceptArt2.png");
         }
         public bool isOnScreen()
         {
@@ -59,7 +68,14 @@ namespace EndangeredSong
         {
             if (isActive)
             {
-                sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                if(frames == 0)
+                    sb.Draw(frame1, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                if (frames == 1)
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                if (frames == 2)
+                    sb.Draw(frame3, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                if (frames == 3)
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
             }
         }     
         public void activate()
@@ -76,15 +92,41 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
+            Rectangle r;
 
-            Rectangle r = player.getRect();
-            Console.WriteLine("Player rect intersects with bio agent rect " + getRect().Intersects(r));
-            if (this.isActive && this.getRect().Intersects(r)) //if bioAgents rect intersects with player rect    
+            for (int i = 0; i < harmonians.Count; i++)  //loops through harmonian and checks for death of found, unhidden harmonians
             {
-                player.Die();
-                Console.WriteLine("RECT INTERSECTION");
-                player.deadHarmonians(this, harmonians);
-            }         
+
+                r = ((Harmonian)harmonians[i]).getRect();
+
+                if (this.getRect().Intersects(r) && ((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid())
+                {
+                    //((Harmonian)harmonians[i]).Die();
+                    //Debug.WriteLine("HARMONIAN DEATH");
+                }
+            }
+
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            frameRate -= elapsed;
+            if(frameRate < 0)
+            {
+                frames++;
+                if (frames > 3)
+                {
+                    frames = 0;
+                }
+                frameRate = timer;
+            }
+            
+            
+
+            //checks for player death
+            r = player.getRect();
+            if (this.getRect().Intersects(r))
+            {                  
+                //player.Die();
+                //Debug.WriteLine("PLAYER DEATH");
+            }            
             Move(controls, player);
         }
 
@@ -97,6 +139,11 @@ namespace EndangeredSong
                 direction.Normalize();
                 this.pos = this.pos + direction * 6;
             }
+        }
+
+        public void Animate()
+        {
+
         }
     }
 }
