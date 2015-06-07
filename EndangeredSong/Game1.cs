@@ -75,8 +75,8 @@ namespace EndangeredSong
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
             water = new ArrayList();
-            coordPlaces = new int[16, 2] { { 300, 2200 }, { 700, 1800 }, { 700, 1200 }, { 700, 1500 }, { 750, 100 }, {800, 2700}, { 1200, 2500 }, {1600, 1300 } , { 2000, 1800} , {2400, 200}, {2450, 200} , {2600, 100} , {3000 , 1300} , {3400, 1700 } , {3500 , 1800} , {3600 , 1750} }; 
-            player = new Player(300, 1500, 200, 120, dimX, dimY);
+            coordPlaces = new int[16, 2] { { 150, 2700 }, { 700, 2400 }, { 700, 1000 }, { 1400, 1500 }, { 750, 100 }, {1000, 2700}, { 1200, 2500 }, {1800, 1300 } , { 2000, 1800} , {2400, 200}, {2450, 200} , {2600, 100} , {3000 , 1300} , {3400, 1700 } , {3500 , 1800} , {3600 , 1750} }; 
+            player = new Player(100, 1500, 200, 120, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
             menu = new Menu(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
