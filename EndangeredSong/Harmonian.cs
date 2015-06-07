@@ -54,10 +54,10 @@ namespace EndangeredSong
         public void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("Harmonian.png");
-//            song = content.Load<SoundEffect>(@songName);
-//            s = song.CreateInstance();
-//            s.Volume = 0;
-//            s.Play();
+            song = content.Load<SoundEffect>(@songName);
+            s = song.CreateInstance();
+            s.Volume = 0;
+            s.Play();
         }
 
         public bool getFound()
@@ -93,21 +93,20 @@ namespace EndangeredSong
                 sb.Draw(image, this.getRect(), Color.White);
         }
 
-        public void Update(Controls controls, GameTime gameTime, Player player)
+        public void Update(Controls controls, GameTime gameTime, Player player, BIOAgent b)
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timer -= elapsed;
-
             Move(controls, player);
             if (timer < 0)
             { 
-//                s.Play();
+                s.Play();
                 timer = TIMER;
             }
-            if (this.isFound)
+            if (this.isFound && !b.isActive)
             {
-//                s.Volume = 1;
-                //this.isHid = player.isHidden();
+                s.Volume = 1;
+                this.isHid = player.isHidden();
             } 
             }
 
@@ -134,13 +133,14 @@ namespace EndangeredSong
         }
 
         //These are method stubs that may be necessary.
-        public void BIOAgentsAreComing()
+        public void BIOAgentsAreComing(BIOAgent bioagent)
         {
-
+                s.Volume = 0;
         }
        public void Die()
         {
             this.isDead = true;
+            s.Stop();
             Console.WriteLine("HARMONIAN DIED");
         }
 

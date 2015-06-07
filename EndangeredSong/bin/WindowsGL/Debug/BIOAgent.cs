@@ -17,7 +17,7 @@ namespace EndangeredSong
     {
 	    int maxX;
         int maxY;
-        bool isActive;
+        public bool isActive;
         
         float frameRate = 0.10f;
         const float timer = 0.10f;
@@ -96,7 +96,7 @@ namespace EndangeredSong
             Console.WriteLine("in bioagent update method");
             Rectangle r = player.getRect();
             Console.WriteLine("Player rect intersects with bio agent rect " + getRect().Intersects(r));
-            if (this.isActive && this.getRect().Intersects(r)) //if bioAgents rect intersects with player rect    
+            if (this.isActive && this.getRect().Intersects(r) && !player.isHidden()) //if bioAgents rect intersects with player rect    
             {
                 player.Die();
                 Console.WriteLine("RECT INTERSECTION");

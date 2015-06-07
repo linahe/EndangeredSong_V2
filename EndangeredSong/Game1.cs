@@ -127,9 +127,9 @@ namespace EndangeredSong
 
             song1 = Content.Load<SoundEffect>(@"1Music");
 
-//            var songInstance = song1.CreateInstance();
-//            songInstance.IsLooped = true;
-//            songInstance.Play();
+            var songInstance = song1.CreateInstance();
+            songInstance.IsLooped = true;
+            songInstance.Play();
                 
             base.Initialize();
         }
@@ -185,7 +185,7 @@ namespace EndangeredSong
                     ((HidingPlace)hidingPlaces[i]).Update(controls, gameTime, player, harmonians);
                 for (int k = 0; k < harmonians.Count; k++)
                 {
-                    ((Harmonian)harmonians[k]).Update(controls, gameTime, player);
+                    ((Harmonian)harmonians[k]).Update(controls, gameTime, player, b1);
                     if (((Harmonian)harmonians[k]).getFound())
                     {
                         foundHarmonians.Add((Harmonian)harmonians[k]);
