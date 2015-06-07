@@ -103,7 +103,7 @@ namespace EndangeredSong
                 s.Play();
                 timer = TIMER;
             }
-            if (this.isFound && !b.isActive)
+            if (this.isFound && !b.isActive && !this.isDead)
             {
                 s.Volume = 1;
                 this.isHid = player.isHidden();
