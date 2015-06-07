@@ -43,3 +43,9 @@ Temporary Items
 .apdisk
 *.mgcontent
 *.pdb
+*.mgcontent
+*.cache
+EndangeredSong/obj/x86/Debug/EndangeredSong.csproj.FileListAbsolute.txt
+*.cache
+*.suo
+*.txt
