@@ -179,10 +179,15 @@ namespace EndangeredSong
             this.pos.X += (int)(direction.X * 6);
             this.pos.Y += (int)(direction.Y * 6);
             }
-
-
+            
         }
-       
+       public void SwitchControls(ArrayList harmonians)
+        {
+           //pseudocode idea
+           //I will get back to this later
+           //for loop to look for all harmonians in arraylist that are found AND alive
+           //replace the harmonian with the player and set the status of the player to alive
+        }
     }
 
 }

@@ -114,8 +114,7 @@ namespace EndangeredSong
                 }
                 frameRate = timer;
             }
-            
-                    
+         
             Move(controls, player);
         }
 
@@ -126,7 +125,7 @@ namespace EndangeredSong
             if (direction.Length() > 10)
             {
                 direction.Normalize();
-                this.pos = this.pos + direction * 6;
+                this.pos = this.pos + direction * 7;
             }
         }
 
