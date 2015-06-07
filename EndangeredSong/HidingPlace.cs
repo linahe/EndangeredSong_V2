@@ -13,10 +13,10 @@ namespace EndangeredSong
 {
     class HidingPlace : Sprite
     {
-        int maxCapacity;
-        int currentCapacity;
-        Texture2D filledHidingPlace;
-        Rectangle rect;
+        protected int maxCapacity;
+        protected int currentCapacity;
+        protected Texture2D filledHidingPlace;
+        protected Rectangle rect;
         //SpriteFont font;
 
         public HidingPlace(int x, int y, int width, int height)

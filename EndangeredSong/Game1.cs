@@ -38,13 +38,11 @@ namespace EndangeredSong
         int dimY;
         int screenWidth;
         int screenHeight;
-        int harmonianCount;
         double elapsedTime;
         int[,] coordPlaces;
 
 
         SoundEffect song1;
-        SoundEffect song2;
         
         public Game1()
         {
@@ -81,7 +79,6 @@ namespace EndangeredSong
             menu = new Menu(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
             started = false;
-            harmonianCount = 1;
 
             controls = new Controls();
             rand = new Random();
