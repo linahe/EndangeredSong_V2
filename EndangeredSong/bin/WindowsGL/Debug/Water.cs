@@ -16,6 +16,14 @@ namespace EndangeredSong
         Rectangle rect;
         //SpriteFont font;
 
+        float frameRate = 1;
+        const float timer = 1;
+        int frames = 0;
+        const int FRAMES = 3;
+        Texture2D frame1;
+        Texture2D frame2;
+        Texture2D frame3;
+
         public Water(int x, int y, int width, int height)
         {
             this.pos.X = x;
@@ -35,7 +43,9 @@ namespace EndangeredSong
         }
         public void LoadContent(ContentManager content)
         {
-            image = content.Load<Texture2D>("Water.png");
+            frame1 = content.Load<Texture2D>("Water.png");
+            frame2 = content.Load<Texture2D>("Water2.png");
+            frame3 = content.Load<Texture2D>("Water3.png");
         }
 
         public Rectangle getRect()
@@ -45,7 +55,14 @@ namespace EndangeredSong
 
         public void Draw(SpriteBatch sb)
         {
-            sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+            if (frames == 0)
+                sb.Draw(frame1, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+            if (frames == 1)
+                sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+            if (frames == 2)
+                sb.Draw(frame3, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+            if (frames == 3)
+                sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
         public void Update(Controls controls, GameTime gameTime, Player player)
         {
@@ -55,7 +72,17 @@ namespace EndangeredSong
             {
                 player.Hide();
             }
-
+            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+            frameRate -= elapsed;
+            if (frameRate < 0)
+            {
+                frames++;
+                if (frames > 3)
+                {
+                    frames = 0;
+                }
+                frameRate = timer;
+            }
         }
 
     }
