@@ -14,10 +14,6 @@ namespace EndangeredSong
             this.dim.X = width;
             this.dim.Y = height;
         }
-        public Vector2 getPosition()
-        {
-            return this.pos;
-        }
 
         public void LoadContent(ContentManager content)
         {

@@ -49,3 +49,8 @@ EndangeredSong/obj/x86/Debug/EndangeredSong.csproj.FileListAbsolute.txt
 *.cache
 *.suo
 *.txt
+*.suo
+EndangeredSong.v12.suo
+*.exe
+*.mgcontent
+*.cache

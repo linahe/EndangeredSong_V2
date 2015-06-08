@@ -17,26 +17,26 @@ namespace EndangeredSong
 		public Sprite ()
 		{
 		}
-        //public Vector2 getPosition()
-        //{
-        //    return this.pos;
-        //}
+        public Vector2 getPosition()
+        {
+            return this.pos;
+        }
 
-        //public Vector2 getDimension()
-        //{
-        //    return this.dim;
-        //}
+        public Vector2 getDimension()
+        {
+            return this.dim;
+        }
 
-        //public bool intersects(Sprite s)
-        //{
-        //    Vector2 Amax, Bmax, Amin, Bmin;
-        //    Amax = new Vector2(this.pos.X + this.dim.X, this.pos.Y);
-        //    Amin = new Vector2(this.pos.X, this.pos.Y + this.dim.Y);
-        //    Bmax = new Vector2(s.getPosition().X + s.getDimension().X, s.getPosition().Y);
-        //    Bmin = new Vector2(s.getPosition().X, s.getPosition().Y + s.getDimension().Y);
+        public bool intersects(Sprite s)
+        {
+            Vector2 Amax, Bmax, Amin, Bmin;
+            Amax = new Vector2(this.pos.X + this.dim.X, this.pos.Y);
+            Amin = new Vector2(this.pos.X, this.pos.Y + this.dim.Y);
+            Bmax = new Vector2(s.getPosition().X + s.getDimension().X, s.getPosition().Y);
+            Bmin = new Vector2(s.getPosition().X, s.getPosition().Y + s.getDimension().Y);
 
-        //    return Amax.X < Bmin.X || Bmax.X < Amin.X || Amax.Y < Bmin.Y || Bmax.Y < Amin.Y;
-        //}
+            return !(Amax.X < Bmin.X || Bmax.X < Amin.X || Amax.Y > Bmin.Y || Bmax.Y > Amin.Y);
+        }
 	}
 }
 

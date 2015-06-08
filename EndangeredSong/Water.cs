@@ -10,10 +10,9 @@ using System.Diagnostics;
 
 namespace EndangeredSong
 {
-    class Water : Sprite
+    class Water : HidingPlace
     {
 
-        Rectangle rect;
         //SpriteFont font;
 
         float frameRate = 1;
@@ -24,33 +23,15 @@ namespace EndangeredSong
         Texture2D frame2;
         Texture2D frame3;
 
-        public Water(int x, int y, int width, int height)
+        public Water(int x, int y, int width, int height) : base(x, y, width, height)
         {
-            this.pos.X = x;
-            this.pos.Y = y;
-            this.dim.X = width;
-            this.dim.Y = height;
-            this.rect = new Rectangle(x, y, width, height);
-        }
-
-        public Vector2 getPosition()
-        {
-            return this.pos;
-        }
-        public Vector2 getDimension()
-        {
-            return this.dim;
+            
         }
         public void LoadContent(ContentManager content)
         {
             frame1 = content.Load<Texture2D>("Water.png");
             frame2 = content.Load<Texture2D>("Water2.png");
             frame3 = content.Load<Texture2D>("Water3.png");
-        }
-
-        public Rectangle getRect()
-        {
-            return this.rect;
         }
 
         public void Draw(SpriteBatch sb)
@@ -66,9 +47,7 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player)
         {
-            Rectangle r = new Rectangle((int)player.getPosition().X, (int)player.getPosition().Y, (int)player.getDimension().X, (int)player.getDimension().Y);
-
-            if (controls.onPress(Keys.Space, Buttons.A) && rect.Intersects(r))
+            if (controls.onPress(Keys.Space, Buttons.A) && this.intersects(player))
             {
                 player.Hide();
             }

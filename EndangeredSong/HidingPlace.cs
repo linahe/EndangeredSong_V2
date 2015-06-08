@@ -16,7 +16,6 @@ namespace EndangeredSong
         protected int maxCapacity;
         protected int currentCapacity;
         protected Texture2D filledHidingPlace;
-        protected Rectangle rect;
         //SpriteFont font;
 
         public HidingPlace(int x, int y, int width, int height)
@@ -25,7 +24,6 @@ namespace EndangeredSong
             this.pos.Y = y;
             this.dim.X = width;
             this.dim.Y = height;
-            this.rect = new Rectangle(x, y, width, height);
             this.maxCapacity = 1;
             this.currentCapacity = 0;
 	    }
@@ -36,27 +34,14 @@ namespace EndangeredSong
             this.pos.Y = y;
             this.dim.X = width;
             this.dim.Y = height;
-            this.rect = new Rectangle(x, y, width, height);
             this.maxCapacity = capacity;
             this.currentCapacity = 0;
         }
         
-        public Vector2 getPosition()
-        {
-            return this.pos;
-        }
-        public Vector2 getDimension()
-        {
-            return this.dim;
-        }
         public void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("emptyrightbigtree.png");
             filledHidingPlace = content.Load<Texture2D>("fullrightbigtree.png");
-        }
-        public Rectangle getRect()
-        {
-            return this.rect;
         }
         public int getMaxCapacity()
         {
@@ -102,10 +87,14 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
-            Rectangle r = player.getRect();
-            if (controls.onPress(Keys.Space, Buttons.A) && rect.Intersects(r))
+            if (controls.onPress(Keys.Space, Buttons.A))
+            {
+                Debug.WriteLine("hello " + this.intersects(player));
+            }
+            if (controls.onPress(Keys.Space, Buttons.A) && this.intersects(player))
             {
                 player.HideHarmonians(this, harmonians);
+                Debug.WriteLine("hello");
             }
 
         }

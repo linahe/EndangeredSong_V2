@@ -47,14 +47,6 @@ namespace EndangeredSong
             this.removed = true;
 	    }
 
-        public Vector2 getPosition()
-        {
-            return this.pos;
-        }
-        public Vector2 getDimension()
-        {
-            return this.dim;
-        }
         public void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("Harmonian.png");
@@ -78,10 +70,7 @@ namespace EndangeredSong
         {
             return this.isDead;
         }
-        public Rectangle getRect()
-        {
-            return new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
-        }
+      
         public bool getAdded() 
         {
             return this.added;
@@ -110,7 +99,7 @@ namespace EndangeredSong
         {
 
           if(!this.isHid && !this.isDead)
-                sb.Draw(image, this.getRect(), Color.White);
+              sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
 
         public void Update(Controls controls, GameTime gameTime, Player player, BIOAgent b)

@@ -38,22 +38,12 @@ namespace EndangeredSong
             this.frameRate = 1;
             this.isActive = false;            
 	    }
-        public Rectangle getRect()
-        {
-            return new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y); 
-        }
-        public Vector2 getPosition()
-        {
-            return this.pos;
-        }
+        
         public void setPosition(Vector2 newPosition)
         {
             this.pos = newPosition;
         }
-        public Vector2 getDimension()
-        {
-            return this.dim;
-        }
+        
         public void LoadContent(ContentManager content)
         {
             frame1 = content.Load<Texture2D>("BIOAgentConceptArt.png");
@@ -93,13 +83,10 @@ namespace EndangeredSong
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
 
-            //Console.WriteLine("in bioagent update method");
-            Rectangle r = player.getRect();
-            //Console.WriteLine("Player rect intersects with bio agent rect " + getRect().Intersects(r));
-            if (this.isActive && this.getRect().Intersects(r) && !(player.isHidden())) //if bioAgents rect intersects with player rect    
+            if (this.isActive && this.intersects(player) && !(player.isHidden())) //if bioAgents intersects with player
             {
+                Debug.WriteLine(this.intersects(player));
                 player.Die();
-              //  Console.WriteLine("RECT INTERSECTION");
                 player.deadHarmonians(this, harmonians);
             }
 

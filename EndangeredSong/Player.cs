@@ -40,16 +40,6 @@ namespace EndangeredSong
             this.isDead = false;
 	    }
        
-        public Vector2 getPosition()
-        {
-            return this.pos;
-            //return this.pos + (this.dim / 2);
-        }
-
-        public Vector2 getDimension()
-        {
-            return this.dim;
-        }
         public int getNumFound()
         {
             return this.numFound;
@@ -58,10 +48,7 @@ namespace EndangeredSong
         {
             return new Vector2(followingPositions[x, 0], followingPositions[x, 1]);
         }
-        public Rectangle getRect()
-        {
-            return new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
-        }
+       
         public void LoadContent(ContentManager content)
         {
             image = content.Load<Texture2D>("Harmonian.png");
@@ -109,7 +96,7 @@ namespace EndangeredSong
                     if (h.isEmpty())
                         break;
                     if (((Harmonian)harmonians[i]).getFound() && ((Harmonian)harmonians[i]).getHid() 
-                                                              && h.getRect().Intersects(((Harmonian)harmonians[i]).getRect()))
+                                                              && h.intersects((Harmonian)harmonians[i]))
                     {
                         ((Harmonian)harmonians[i]).setHid(false);
                         h.empty();
@@ -125,7 +112,7 @@ namespace EndangeredSong
                     if (h.isFull())
                         break;                    
                     if (((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid()
-                                                              && h.getRect().Intersects(((Harmonian)harmonians[i]).getRect()))
+                                                              && h.intersects((Harmonian)harmonians[i]))
                     {
                         ((Harmonian)harmonians[i]).setHid(true);
                         h.fill();
@@ -145,7 +132,7 @@ namespace EndangeredSong
             for (int i = 0; i < harmonians.Count; i++)
                 if (((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid()
                     && (!((Harmonian)harmonians[i]).getDead())
-                    && b.getRect().Intersects(((Harmonian)harmonians[i]).getRect()))
+                    && b.intersects((Harmonian)harmonians[i]))
                 {
                     ((Harmonian)harmonians[i]).Die();
                 }
