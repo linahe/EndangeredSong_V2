@@ -20,10 +20,17 @@ namespace EndangeredSong
         {
             return this.pos;
         }
-
         public Vector2 getDimension()
         {
             return this.dim;
+        }
+        public void setPosition(Vector2 newPos)
+        {
+            this.pos = newPos;
+        }
+        public void setDimensions(Vector2 newDim)
+        {
+            this.dim = newDim;
         }
 
         public bool intersects(Sprite s)

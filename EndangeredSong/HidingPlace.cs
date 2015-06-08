@@ -15,9 +15,8 @@ namespace EndangeredSong
     {
         protected int maxCapacity;
         protected int currentCapacity;
-        protected Texture2D filledHidingPlace;
-        protected Texture2D image;
-        //SpriteFont font;
+        protected Texture2D filledImage;
+        protected Texture2D emptyImage;
 
         public HidingPlace(int x, int y, int width, int height)
 	    {
@@ -41,8 +40,16 @@ namespace EndangeredSong
         
         public void LoadContent(ContentManager content)
         {
-            image = content.Load<Texture2D>("emptyrightbigtree.png");
-            filledHidingPlace = content.Load<Texture2D>("fullrightbigtree.png");
+            if (this.maxCapacity == 3)  //tree
+            {
+                emptyImage = content.Load<Texture2D>("emptyrightbigtree.png");
+                filledImage = content.Load<Texture2D>("fullrightbigtree.png");
+            }
+            else    //rock
+            {
+                emptyImage = content.Load<Texture2D>("EmptyRock.png");
+                filledImage = content.Load<Texture2D>("FilledRock.png");
+            }
         }
         public int getMaxCapacity()
         {
@@ -82,20 +89,15 @@ namespace EndangeredSong
         public void Draw(SpriteBatch sb)
         {
             if (this.isEmpty())
-                sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                sb.Draw(emptyImage, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
             else
-                sb.Draw(filledHidingPlace, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                sb.Draw(filledImage, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
-            if (controls.onPress(Keys.Space, Buttons.A))
-            {
-                Debug.WriteLine("hello " + this.intersects(player));
-            }
             if (controls.onPress(Keys.Space, Buttons.A) && this.intersects(player))
             {
                 player.HideHarmonians(this, harmonians);
-                Debug.WriteLine("hello");
             }
 
         }

@@ -54,3 +54,5 @@ EndangeredSong.v12.suo
 *.exe
 *.mgcontent
 *.cache
+*.exe
+EndangeredSong/Content/obj/WindowsGL/.mgcontent

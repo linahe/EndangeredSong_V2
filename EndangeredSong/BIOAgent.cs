@@ -18,6 +18,7 @@ namespace EndangeredSong
 	    int maxX;
         int maxY;
         public bool isActive;
+
         
         float frameRate = 0.10f;
         const float timer = 0.10f;
@@ -36,13 +37,8 @@ namespace EndangeredSong
             this.maxX = maxX;
             this.maxY = maxY;
             this.frameRate = 1;
-            this.isActive = false;            
+            this.isActive = false;
 	    }
-        
-        public void setPosition(Vector2 newPosition)
-        {
-            this.pos = newPosition;
-        }
         
         public void LoadContent(ContentManager content)
         {
