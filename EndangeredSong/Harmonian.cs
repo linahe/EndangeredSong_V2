@@ -23,6 +23,8 @@ namespace EndangeredSong
         SoundEffect song;
         SoundEffectInstance s;
         bool isDead;
+        bool added;
+        bool removed;
 
         float timer = 24;         
         const float TIMER = 24;
@@ -41,6 +43,8 @@ namespace EndangeredSong
             this.songName = sn;
             this.hasPlayed = false;
             this.isDead = false;
+            this.added = false;
+            this.removed = true;
 	    }
 
         public Vector2 getPosition()
@@ -77,6 +81,22 @@ namespace EndangeredSong
         public Rectangle getRect()
         {
             return new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
+        }
+        public bool getAdded() 
+        {
+            return this.added;
+        }
+        public void setAdded(bool a) 
+        {
+            this.added = a;
+        }
+        public bool getRemoved()
+        {
+            return this.removed;
+        }
+        public void setRemoved(bool x)
+        {
+            this.removed = x;
         }
         public void setFound(bool b)
         {

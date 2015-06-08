@@ -190,13 +190,21 @@ namespace EndangeredSong
                 for (int k = 0; k < harmonians.Count; k++)
                 {
                     ((Harmonian)harmonians[k]).Update(controls, gameTime, player, b1);
-                    if (((Harmonian)harmonians[k]).getFound())
+                    if (((Harmonian)harmonians[k]).getFound() && !((Harmonian)harmonians[k]).getAdded())
                     {
                         foundHarmonians.Add((Harmonian)harmonians[k]);
+                        ((Harmonian)harmonians[k]).setAdded(true);
+                    }
+                }
+                for (int a = 0; a < foundHarmonians.Count; a++)
+                {
+                    if (((Harmonian)foundHarmonians[a]).getDead() && !((Harmonian)harmonians[a]).getRemoved())
+                    {
+                        ((Harmonian)harmonians[a]).setRemoved(true);
                     }
                 }
 
-                b1.Update(controls, gameTime, player, harmonians);
+                    b1.Update(controls, gameTime, player, harmonians);
                 player.Update(controls, gameTime);
                 map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player);
                 
