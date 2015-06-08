@@ -12,7 +12,6 @@ namespace EndangeredSong
 	{
 		protected Vector2 pos;
 		protected Vector2 dim;
-		protected Texture2D image;
 
 		public Sprite ()
 		{

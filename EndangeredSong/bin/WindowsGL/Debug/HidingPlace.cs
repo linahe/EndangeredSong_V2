@@ -16,6 +16,7 @@ namespace EndangeredSong
         protected int maxCapacity;
         protected int currentCapacity;
         protected Texture2D filledHidingPlace;
+        protected Texture2D image;
         //SpriteFont font;
 
         public HidingPlace(int x, int y, int width, int height)

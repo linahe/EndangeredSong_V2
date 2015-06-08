@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace EndangeredSong
 {
-    class Water : HidingPlace
+    class Water : Sprite
     {
 
         //SpriteFont font;
@@ -23,9 +23,12 @@ namespace EndangeredSong
         Texture2D frame2;
         Texture2D frame3;
 
-        public Water(int x, int y, int width, int height) : base(x, y, width, height)
+        public Water(int x, int y, int width, int height)
         {
-            
+            this.pos.X = x;
+            this.pos.Y = y;
+            this.dim.X = width;
+            this.dim.Y = height;
         }
         public void LoadContent(ContentManager content)
         {
@@ -47,10 +50,10 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player)
         {
-            if (controls.onPress(Keys.Space, Buttons.A) && this.intersects(player))
-            {
-                player.Hide();
-            }
+            //if (controls.onPress(Keys.Space, Buttons.A) && this.intersects(player))
+            //{
+            //    player.Hide();
+            //}
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             frameRate -= elapsed;
             if (frameRate < 0)

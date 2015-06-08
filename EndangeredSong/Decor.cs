@@ -5,8 +5,10 @@ using System;
 
 namespace EndangeredSong
 {
+    
     class Decor : Sprite
-    {
+    {   
+        Texture2D image;
         public Decor(int x, int y, int width, int height)
         {
             this.pos.X = x;

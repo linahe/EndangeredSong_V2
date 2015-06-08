@@ -18,7 +18,7 @@ namespace EndangeredSong
         int maxX;
         int maxY;
         int numFound;
-
+        Texture2D image;
         bool isDead;
         
         public Player (int x, int y, int width, int height, int maxX, int maxY)

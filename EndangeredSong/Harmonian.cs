@@ -22,6 +22,7 @@ namespace EndangeredSong
         bool hasPlayed;
         SoundEffect song;
         SoundEffectInstance s;
+        Texture2D image;
         bool isDead;
         bool added;
         bool removed;
