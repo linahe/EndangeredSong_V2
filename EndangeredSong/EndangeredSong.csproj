@@ -43,7 +43,6 @@
     </Compile>
     <Compile Include="bios.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="Rock.cs" />
     <Compile Include="Water.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
