@@ -50,6 +50,8 @@ namespace EndangeredSong
         double elapsedTime;
         int[,] coordPlaces;
         int[,] harmonianPlaces;
+        Texture2D endPlace;
+        Rectangle endPlaceRect;
 
 
         SoundEffect song1;
@@ -78,12 +80,16 @@ namespace EndangeredSong
             dimX = GraphicsDevice.Viewport.Bounds.Width;
             dimY = GraphicsDevice.Viewport.Bounds.Height;
 
+
+
+            endPlaceRect = new Rectangle(3800, 200, 200, 200);
             foundHarmonians = new ArrayList();
             harmonians = new ArrayList();
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
             water = new ArrayList();
 
+            
             coordPlaces = new int[12, 3] { { 150, 2700, 3 }, { 700, 2400, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1200, 2700, 3} , { 2000, 2000, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
                                          {3600, 1300, 3 } , { 3800, 2800, 2} };
 
@@ -98,6 +104,7 @@ namespace EndangeredSong
 
             controls = new Controls();
             rand = new Random();
+
 
             for (int j = 0; j < 50; j ++ )
             {
@@ -164,6 +171,8 @@ namespace EndangeredSong
             menu.LoadContent(this.Content);
             lose.LoadContent(this.Content);
 
+            endPlace = Content.Load<Texture2D>("star.png");
+
             for (int j = 0; j < decorations.Count; j++)
                 ((Decor)decorations[j]).LoadContent(this.Content);
             for (int l = 0; l < water.Count; l++)
@@ -228,7 +237,7 @@ namespace EndangeredSong
 
                     b1.Update(controls, gameTime, player, harmonians);
                 player.Update(controls, gameTime);
-                map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player);
+                map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player, endPlaceRect);
                 
 
 
@@ -269,6 +278,7 @@ namespace EndangeredSong
                 lose.Draw(spriteBatch);
             else
             {
+                spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
 
                 for (int j = 0; j < decorations.Count; j++)
                     ((Decor)decorations[j]).Draw(spriteBatch);
@@ -281,7 +291,12 @@ namespace EndangeredSong
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
 
+               
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
+
+                //hardcoded winning place
+                
+                Console.WriteLine("drawing setar");
             }
                         
             spriteBatch.End();           
