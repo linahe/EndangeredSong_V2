@@ -84,7 +84,8 @@ namespace EndangeredSong
             water = new ArrayList();
             r1 = new Rock(3000, 2000, 800, 650);
             r2 = new Rock(900, 1000, 800, 650);
-            coordPlaces = new int[16, 2] { { 150, 2700 }, { 700, 2400 }, { 700, 1000 }, { 750, 100 }, { 1400, 1500 }, {1000, 2700}, { 1200, 2500 }, {1800, 1300 } , { 2000, 1800} , {2400, 200}, {2450, 200} , {2600, 100} , {3000 , 1300} , {3400, 1700 } , {3500 , 1800} , {3600 , 1750} };
+            coordPlaces = new int[12, 2] { { 150, 2700 }, { 700, 2400 }, { 600, 1500 }, { 1300, 600 },  {1200, 2700} , { 2000, 2000 },  {2400, 200}, {2750, 2500}, { 2900, 1500 },  {3000, 600}  ,
+                                         {3600, 1300 } , { 3800, 2800} };
             player = new Player(100, 1500, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
             menu = new Menu(0, 0, screenWidth, screenHeight);
@@ -100,7 +101,7 @@ namespace EndangeredSong
                 decorations.Add(dec);
             }
 
-            for (int i = 0; i < 16; i++)    
+            for (int i = 0; i < 12; i++)    
             {                
                 HidingPlace p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i,1], 400, 500, rand.Next(1, 4));                
                 hidingPlaces.Add(p);
@@ -134,13 +135,13 @@ namespace EndangeredSong
 
             song1 = Content.Load<SoundEffect>(@"1Music");
 
-            songInstance = song1.CreateInstance();
-            songInstance.IsLooped = true;
-            songInstance.Play();
+//            songInstance = song1.CreateInstance();
+//            songInstance.IsLooped = true;
+//            songInstance.Play();
 
 
             BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
-            bioTrouble = BIOAgentTheme.CreateInstance();
+//            bioTrouble = BIOAgentTheme.CreateInstance();
             
             base.Initialize();
         }
