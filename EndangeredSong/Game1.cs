@@ -20,6 +20,7 @@ namespace EndangeredSong
         Controls controls;
 
         Menu menu;
+        GameOver lose;
         bool started;
         Camera camera;
         MiniMap map;
@@ -89,6 +90,7 @@ namespace EndangeredSong
             player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
             menu = new Menu(0, 0, screenWidth, screenHeight);
+            lose = new GameOver(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
 
 
@@ -160,6 +162,7 @@ namespace EndangeredSong
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
             menu.LoadContent(this.Content);
+            lose.LoadContent(this.Content);
 
             for (int j = 0; j < decorations.Count; j++)
                 ((Decor)decorations[j]).LoadContent(this.Content);
@@ -186,8 +189,18 @@ namespace EndangeredSong
                 started = true;
 
             controls.Update();
-
-            if (started)
+            if(!started)
+                    
+            {
+                menu.Update();
+                camera.Update(gameTime, menu, screenWidth, screenHeight);
+            }
+            else if (player.getDead())
+            {
+                lose.Update();
+                camera.Update(gameTime, lose, screenWidth, screenHeight);
+            }
+            else
             {
                 camera.Update(gameTime, player, screenWidth, screenHeight);
                 for (int j = 0; j < decorations.Count; j++ )
@@ -238,11 +251,7 @@ namespace EndangeredSong
                 }
             }
 
-            else
-            {
-                menu.Update();
-                camera.Update(gameTime, menu, screenWidth, screenHeight);
-            }
+        
             
             base.Update(gameTime);
         }
@@ -256,10 +265,12 @@ namespace EndangeredSong
 
             if (!started)
                 menu.Draw(spriteBatch);
+            else if (player.getDead())
+                lose.Draw(spriteBatch);
             else
             {
 
-                for (int j = 0; j < decorations.Count; j++ )
+                for (int j = 0; j < decorations.Count; j++)
                     ((Decor)decorations[j]).Draw(spriteBatch);
                 for (int l = 0; l < water.Count; l++)
                     ((Water)water[l]).Draw(spriteBatch);
@@ -270,7 +281,7 @@ namespace EndangeredSong
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
 
-                map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);                
+                map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
             }
                         
             spriteBatch.End();           

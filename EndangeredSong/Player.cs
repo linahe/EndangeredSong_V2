@@ -57,7 +57,10 @@ namespace EndangeredSong
         {
             return this.isHid;
         }
-
+        public bool getDead()
+        {
+            return this.isDead;
+        }
         public void foundHarmonian()
         {
             this.numFound++;
