@@ -49,6 +49,7 @@ namespace EndangeredSong
         int screenHeight;
         double elapsedTime;
         int[,] coordPlaces;
+        int[,] harmonianPlaces;
 
 
         SoundEffect song1;
@@ -84,12 +85,15 @@ namespace EndangeredSong
             water = new ArrayList();
             r1 = new Rock(3000, 2000, 800, 650);
             r2 = new Rock(900, 1000, 800, 650);
-            coordPlaces = new int[12, 2] { { 150, 2700 }, { 700, 2400 }, { 600, 1500 }, { 1300, 600 },  {1200, 2700} , { 2000, 2000 },  {2400, 200}, {2750, 2500}, { 2900, 1500 },  {3000, 600}  ,
+            coordPlaces = new int[12, 2] { { 150, 2700 }, { 700, 2400 }, { 1050, 1500 }, { 1300, 600 },  {1200, 2700} , { 2000, 2000 },  {2400, 200}, {2750, 2500}, { 2900, 1500 },  {3000, 600}  ,
                                          {3600, 1300 } , { 3800, 2800} };
-            player = new Player(100, 1500, harmoniansizeX, harmoniansizeY, dimX, dimY);
+
+            player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
             menu = new Menu(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
+
+
             started = false;
 
             controls = new Controls();
@@ -112,25 +116,25 @@ namespace EndangeredSong
                 water.Add(w);
             }
 
-            Harmonian h1 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian1");
+            Harmonian h1 = new Harmonian(700, 1900, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian1");
             harmonians.Add(h1);
-            Harmonian h2 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian3");
+            Harmonian h2 = new Harmonian(900, 400, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian3");
             harmonians.Add(h2);
-            Harmonian h3 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian4");
+            Harmonian h3 = new Harmonian(1300, 2500, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian4");
             harmonians.Add(h3);
-            Harmonian h4 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian5");
+            Harmonian h4 = new Harmonian(2000, 2600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian5");
             harmonians.Add(h4);
-            Harmonian h5 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian6");
-            harmonians.Add(h2);
-            Harmonian h6 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian7");
-            harmonians.Add(h2);
-            Harmonian h7 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian8");
+            Harmonian h5 = new Harmonian(2800, 2300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian6");
+            harmonians.Add(h5);
+            Harmonian h6 = new Harmonian(3800, 2300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian7");
+            harmonians.Add(h6);
+            Harmonian h7 = new Harmonian(3400, 1600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian8");
             harmonians.Add(h7);
-            Harmonian h8 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian9");
+            Harmonian h8 = new Harmonian(500, 600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian9");
             harmonians.Add(h8);
-            Harmonian h9 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian10");
+            Harmonian h9 = new Harmonian(2500, 1200, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian10");
             harmonians.Add(h9);
-            Harmonian h10 = new Harmonian(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian11");
+            Harmonian h10 = new Harmonian(700, 300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian11");
             harmonians.Add(h10);
 
             song1 = Content.Load<SoundEffect>(@"1Music");
@@ -224,8 +228,8 @@ namespace EndangeredSong
                 if (elapsedTime%20 >= 5 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
-                    songInstance.Volume = 0;
-                    bioTrouble.Play();
+//                    songInstance.Volume = 0;
+//                    bioTrouble.Play();
                     b1.setPosition(new Vector2(rand.Next(0, 4000), rand.Next(0, 3000)));
                     //b1.setPosition(new Vector2(player.getPosition().X, player.getPosition().Y));                    
                 }
@@ -233,8 +237,8 @@ namespace EndangeredSong
                 if (elapsedTime % 20 >= 10) 
                 {
                     b1.disactivate();
-                    songInstance.Volume = 1;
-                    bioTrouble.Stop();
+//                    songInstance.Volume = 1;
+//                    bioTrouble.Stop();
                     elapsedTime = 0;
                 }
             }
