@@ -80,6 +80,7 @@ namespace EndangeredSong
             if (currentCapacity > 0)
             {
                 currentCapacity--;
+                Console.WriteLine("Current capacity is: " + currentCapacity);
                 return true;
             }
             else return false;

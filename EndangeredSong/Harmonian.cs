@@ -98,6 +98,7 @@ namespace EndangeredSong
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timer -= elapsed;
             Move(controls, player);
+            
             if (timer < 0)
             { 
                 s.Play();
@@ -107,7 +108,9 @@ namespace EndangeredSong
             {
                 s.Volume = 1;
                 this.isHid = player.isHidden();
-            } 
+            }
+            if (b.isActive)
+                s.Volume = 0;
             }
 
         public void Move(Controls controls, Player player)

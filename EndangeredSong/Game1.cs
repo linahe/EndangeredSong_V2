@@ -35,6 +35,7 @@ namespace EndangeredSong
         Rock r1;
         Rock r2;
 
+        SoundEffectInstance songInstance;
         Player player;
         BIOAgent b1;
 
@@ -130,7 +131,7 @@ namespace EndangeredSong
 
             song1 = Content.Load<SoundEffect>(@"1Music");
 
-            var songInstance = song1.CreateInstance();
+            songInstance = song1.CreateInstance();
             songInstance.IsLooped = true;
             songInstance.Play();
                 
@@ -207,6 +208,7 @@ namespace EndangeredSong
                 if (elapsedTime%20 >= 5 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
+                    songInstance.Volume = 0;
                     b1.setPosition(new Vector2(rand.Next(0, 4000), rand.Next(0, 3000)));
                     //b1.setPosition(new Vector2(player.getPosition().X, player.getPosition().Y));                    
                 }
@@ -214,6 +216,7 @@ namespace EndangeredSong
                 if (elapsedTime % 20 >= 10) 
                 {
                     b1.disactivate();
+                    songInstance.Volume = 1;
                     elapsedTime = 0;
                 }
             }
