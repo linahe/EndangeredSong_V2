@@ -39,6 +39,9 @@ namespace EndangeredSong
         Player player;
         BIOAgent b1;
 
+        SoundEffectInstance bioTrouble;
+        SoundEffect BIOAgentTheme;
+
         Random rand;
         int dimX;
         int dimY;
@@ -134,7 +137,11 @@ namespace EndangeredSong
             songInstance = song1.CreateInstance();
             songInstance.IsLooped = true;
             songInstance.Play();
-                
+
+
+            BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
+            bioTrouble = BIOAgentTheme.CreateInstance();
+            
             base.Initialize();
         }
 
@@ -217,6 +224,7 @@ namespace EndangeredSong
                 {
                     b1.activate();
                     songInstance.Volume = 0;
+                    bioTrouble.Play();
                     b1.setPosition(new Vector2(rand.Next(0, 4000), rand.Next(0, 3000)));
                     //b1.setPosition(new Vector2(player.getPosition().X, player.getPosition().Y));                    
                 }
@@ -225,6 +233,7 @@ namespace EndangeredSong
                 {
                     b1.disactivate();
                     songInstance.Volume = 1;
+                    bioTrouble.Stop();
                     elapsedTime = 0;
                 }
             }

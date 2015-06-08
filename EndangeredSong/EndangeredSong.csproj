@@ -102,6 +102,9 @@
     <Content Include="Content\BIOAgentConceptArtSpriteSheet.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\BIOAgents.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bios.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
