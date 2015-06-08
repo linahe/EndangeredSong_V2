@@ -32,8 +32,7 @@ namespace EndangeredSong
         ArrayList hidingPlaces;
         ArrayList decorations;
         ArrayList water;
-        Rock r1;
-        Rock r2;
+
 
         SoundEffectInstance songInstance;
         Player player;
@@ -83,8 +82,7 @@ namespace EndangeredSong
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
             water = new ArrayList();
-            r1 = new Rock(3000, 2000, 800, 650);
-            r2 = new Rock(900, 1000, 800, 650);
+
             coordPlaces = new int[12, 2] { { 150, 2700 }, { 700, 2400 }, { 1050, 1500 }, { 1300, 600 },  {1200, 2700} , { 2000, 2000 },  {2400, 200}, {2750, 2500}, { 2900, 1500 },  {3000, 600}  ,
                                          {3600, 1300 } , { 3800, 2800} };
 
@@ -162,8 +160,7 @@ namespace EndangeredSong
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
             menu.LoadContent(this.Content);
-            r1.LoadContent(this.Content);
-            r2.LoadContent(this.Content);
+
             for (int j = 0; j < decorations.Count; j++)
                 ((Decor)decorations[j]).LoadContent(this.Content);
             for (int l = 0; l < water.Count; l++)
@@ -220,9 +217,7 @@ namespace EndangeredSong
                 player.Update(controls, gameTime);
                 map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player);
                 
-                //Rocks are updated here.
-                r1.Update(controls, gameTime, player, harmonians);
-                r2.Update(controls, gameTime, player, harmonians);
+
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (elapsedTime%20 >= 5 && !b1.isOnScreen() ) // add bool?
@@ -263,8 +258,7 @@ namespace EndangeredSong
                 menu.Draw(spriteBatch);
             else
             {
-                r1.Draw(spriteBatch);
-                r2.Draw(spriteBatch);
+
                 for (int j = 0; j < decorations.Count; j++ )
                     ((Decor)decorations[j]).Draw(spriteBatch);
                 for (int l = 0; l < water.Count; l++)
