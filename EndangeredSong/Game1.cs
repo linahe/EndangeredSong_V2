@@ -83,8 +83,8 @@ namespace EndangeredSong
             decorations = new ArrayList();
             water = new ArrayList();
 
-            coordPlaces = new int[12, 2] { { 150, 2700 }, { 700, 2400 }, { 1050, 1500 }, { 1300, 600 },  {1200, 2700} , { 2000, 2000 },  {2400, 200}, {2750, 2500}, { 2900, 1500 },  {3000, 600}  ,
-                                         {3600, 1300 } , { 3800, 2800} };
+            coordPlaces = new int[12, 3] { { 150, 2700, 3 }, { 700, 2400, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1200, 2700, 3} , { 2000, 2000, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
+                                         {3600, 1300, 3 } , { 3800, 2800, 2} };
 
             player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
@@ -105,7 +105,7 @@ namespace EndangeredSong
 
             for (int i = 0; i < 12; i++)    
             {                
-                HidingPlace p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i,1], 400, 500, rand.Next(1, 4));                
+                HidingPlace p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i,1], 400, 500, coordPlaces[i, 2]);                
                 hidingPlaces.Add(p);
             }
             for (int k = 0; k < 3; k++)
