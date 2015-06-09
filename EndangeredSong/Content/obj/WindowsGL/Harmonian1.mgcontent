@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Liuli/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/Harmonian1.mp3</SourceFile>
-  <SourceTime>2015-06-07T21:19:30.0069159-04:00</SourceTime>
-  <DestFile>C:/Users/Liuli/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/bin/WindowsGL/Harmonian1.xnb</DestFile>
-  <DestTime>2015-06-08T23:16:07.7944597-04:00</DestTime>
+  <SourceFile>C:/Users/Owner/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/Harmonian1.mp3</SourceFile>
+  <SourceTime>2015-06-07T11:14:21.0359705-07:00</SourceTime>
+  <DestFile>C:/Users/Owner/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/bin/WindowsGL/Harmonian1.xnb</DestFile>
+  <DestTime>2015-06-09T08:21:18.5547795-07:00</DestTime>
   <Importer>Mp3Importer</Importer>
-  <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
+  <ImporterTime>2015-04-29T10:14:44-07:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>
-  <ProcessorTime>2015-04-29T13:14:44-04:00</ProcessorTime>
+  <ProcessorTime>2015-04-29T10:14:44-07:00</ProcessorTime>
   <Parameters>
     <Key>Quality</Key>
     <Value>Best</Value>
