@@ -197,7 +197,7 @@ namespace EndangeredSong
             }
             else
             {
-                player.Update(controls, gameTime);
+                player.Update(controls, gameTime, water);
                 camera.Update(gameTime, player, screenWidth, screenHeight);
                 for (int j = 0; j < decorations.Count; j++ )
                     ((Decor)decorations[j]).Update(controls, gameTime);
@@ -211,7 +211,12 @@ namespace EndangeredSong
 
                 b1.Update(controls, gameTime, player, harmonians);                
                 map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player, endPlaceRect);
+                //             Amax = new Vector2(this.pos.X + this.dim.X, this.pos.Y);
                 
+                if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
+                {
+                    manager.setToGameWon();
+                }
                 if(player.isDead())
                 {
                     manager.setToGameOver();
@@ -235,6 +240,7 @@ namespace EndangeredSong
                     bioTrouble.Stop();
                     elapsedTime = 0;
                 }
+                
             }
 
         
