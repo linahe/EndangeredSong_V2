@@ -17,6 +17,7 @@ namespace EndangeredSong
         private Texture2D gameWon;
         private Texture2D instructions1;
         private Texture2D instructions2;
+        private Texture2D instructions3;
         private Texture2D activeScreen;
         private Rectangle rect;
         private float timer = 0.8f;
@@ -38,16 +39,19 @@ namespace EndangeredSong
             gameWon = content.Load<Texture2D>("winscreen");
             instructions1 = content.Load<Texture2D>("instruction1");
             instructions2 = content.Load<Texture2D>("instruction2");
+            instructions3 = content.Load<Texture2D>("instruction3");
             rect = new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
             activeScreen = mainMenu;
         }
         public void setToMenu()
         {
             activeScreen = mainMenu;
+            onMainGame = false;
         }
         public void setToGameOver()
         {
             activeScreen = gameOver;
+            onMainGame = false;
         }
         public void setToGameWon()
         {
@@ -73,8 +77,9 @@ namespace EndangeredSong
         {
             if (this.activeScreen == instructions1)
                 this.activeScreen = instructions2;
-            else
+            else if (this.activeScreen == instructions2)
                 this.activeScreen = instructions1;
+            else return;
         }
         public void Update(GameTime gameTime, Controls controls)
         {
@@ -94,7 +99,12 @@ namespace EndangeredSong
                     timer = 1;
                 }
                 if (controls.onRelease(Keys.Space, Buttons.A))
-                    this.setToMainGame();
+                {
+                    if (this.activeScreen == instructions3)
+                        this.setToMainGame();
+                    else
+                        this.activeScreen = instructions3;
+                }
             }
             
 

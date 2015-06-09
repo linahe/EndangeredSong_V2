@@ -218,3 +218,4 @@ C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\obj\x86\Debug\E
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction1.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction2.png
+C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction3.png

@@ -89,7 +89,7 @@ namespace EndangeredSong
                                          {3600, 1300, 3 } , { 3800, 2800, 2} };
 
             player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
-            b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
+            b1 = new BIOAgent(400, 200, 200, 350, dimX, dimY);
             manager = new ScreenManager(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
 
@@ -116,8 +116,8 @@ namespace EndangeredSong
                 }
                 else
                 {
-                    x = 650;
-                    y = 600;
+                    x = 325;
+                    y = 300;
                 }
                 p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i, 1], x, y, coordPlaces[i, 2]);
                 hidingPlaces.Add(p);
