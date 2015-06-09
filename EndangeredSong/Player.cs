@@ -19,7 +19,7 @@ namespace EndangeredSong
         int maxY;
         int numFound;
         Texture2D image;
-        bool isDead;
+        bool dead;
         
         public Player (int x, int y, int width, int height, int maxX, int maxY)
 	    {
@@ -37,7 +37,7 @@ namespace EndangeredSong
             followingPositions = new int[8, 2] {{-60, -60},{0, -80},{60, -60},{80, 0},{60, 60},{0, 80},{-60, 60},{-80, 0}};
             numFound = 0;
 
-            this.isDead = false;
+            this.dead = false;
 	    }
        
         public int getNumFound()
@@ -57,9 +57,9 @@ namespace EndangeredSong
         {
             return this.isHid;
         }
-        public bool getDead()
+        public bool isDead()
         {
-            return this.isDead;
+            return this.dead;
         }
         public void foundHarmonian()
         {
@@ -71,13 +71,13 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-            if(!this.isHid && !isDead)
+            if(!this.isHid && !this.dead)
                 sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
 
         public void Update(Controls controls, GameTime gameTime)
         {
-            if (!isDead)
+            if (!this.dead)
             {
                 Move(controls);
             }
@@ -98,7 +98,7 @@ namespace EndangeredSong
                     
                     if (h.isEmpty())
                         break;
-                    if (((Harmonian)harmonians[i]).getFound() && ((Harmonian)harmonians[i]).getHid() 
+                    if (((Harmonian)harmonians[i]).isFound() && ((Harmonian)harmonians[i]).isHid() 
                                                               && h.intersects((Harmonian)harmonians[i]))
                     {
                         ((Harmonian)harmonians[i]).setHid(false);
@@ -114,7 +114,7 @@ namespace EndangeredSong
                 {
                     if (h.isFull())
                         break;                    
-                    if (((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid()
+                    if (((Harmonian)harmonians[i]).isFound() && !((Harmonian)harmonians[i]).isHid()
                                                               && h.intersects((Harmonian)harmonians[i]))
                     {
                         ((Harmonian)harmonians[i]).setHid(true);
@@ -133,8 +133,8 @@ namespace EndangeredSong
         public void deadHarmonians(BIOAgent b, ArrayList harmonians)
         {
             for (int i = 0; i < harmonians.Count; i++)
-                if (((Harmonian)harmonians[i]).getFound() && !((Harmonian)harmonians[i]).getHid()
-                    && (!((Harmonian)harmonians[i]).getDead())
+                if (((Harmonian)harmonians[i]).isFound() && !((Harmonian)harmonians[i]).isHid()
+                    && (!((Harmonian)harmonians[i]).isDead())
                     && b.intersects((Harmonian)harmonians[i]))
                 {
                     ((Harmonian)harmonians[i]).Die();
@@ -143,7 +143,7 @@ namespace EndangeredSong
 
         public void Die()
         {
-            this.isDead = true;
+            this.dead = true;
         }
 
         public void Move(Controls controls)

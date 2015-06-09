@@ -41,9 +41,8 @@
     <Compile Include="BIOAgent.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
-    <Compile Include="bios.cs" />
     <Compile Include="Camera.cs" />
-    <Compile Include="GameOver.cs" />
+    <Compile Include="ScreenManager.cs" />
     <Compile Include="Water.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>
@@ -57,7 +56,6 @@
     <Compile Include="Decor.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="Harmonian.cs" />
-    <Compile Include="Menu.cs" />
     <Compile Include="HidingPlace.cs">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Compile>

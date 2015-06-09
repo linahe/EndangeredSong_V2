@@ -14,21 +14,18 @@ namespace EndangeredSong
 
     public class Game1 : Game
     {
-  //      Song song;
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Controls controls;
 
-        Menu menu;
-        GameOver lose;
         bool started;
         Camera camera;
         MiniMap map;
+        ScreenManager manager;
 
         const int harmoniansizeX = 100;
         const int harmoniansizeY = 60;
 
-        ArrayList foundHarmonians;
         ArrayList harmonians;
         ArrayList hidingPlaces;
         ArrayList decorations;
@@ -49,7 +46,6 @@ namespace EndangeredSong
         int screenHeight;
         double elapsedTime;
         int[,] coordPlaces;
-        int[,] harmonianPlaces;
         Texture2D endPlace;
         Rectangle endPlaceRect;
 
@@ -83,7 +79,6 @@ namespace EndangeredSong
 
 
             endPlaceRect = new Rectangle(3800, 200, 200, 200);
-            foundHarmonians = new ArrayList();
             harmonians = new ArrayList();
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
@@ -95,8 +90,7 @@ namespace EndangeredSong
 
             player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(600, 300, 200, 350, dimX, dimY);
-            menu = new Menu(0, 0, screenWidth, screenHeight);
-            lose = new GameOver(0, 0, screenWidth, screenHeight);
+            manager = new ScreenManager(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
 
 
@@ -146,13 +140,13 @@ namespace EndangeredSong
 
             song1 = Content.Load<SoundEffect>(@"1Music");
 
-//            songInstance = song1.CreateInstance();
-//            songInstance.IsLooped = true;
-//            songInstance.Play();
+            songInstance = song1.CreateInstance();
+            songInstance.IsLooped = true;
+            songInstance.Play();
 
 
             BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
-//            bioTrouble = BIOAgentTheme.CreateInstance();
+            bioTrouble = BIOAgentTheme.CreateInstance();
             
             base.Initialize();
         }
@@ -168,8 +162,7 @@ namespace EndangeredSong
 
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
-            menu.LoadContent(this.Content);
-            lose.LoadContent(this.Content);
+            manager.LoadContent(this.Content);
 
             endPlace = Content.Load<Texture2D>("star.png");
 
@@ -198,19 +191,13 @@ namespace EndangeredSong
                 started = true;
 
             controls.Update();
-            if(!started)
-                    
+            if(!started || player.isDead())                    
             {
-                menu.Update();
-                camera.Update(gameTime, menu, screenWidth, screenHeight);
-            }
-            else if (player.getDead())
-            {
-                lose.Update();
-                camera.Update(gameTime, lose, screenWidth, screenHeight);
+                camera.Update(gameTime, manager, screenWidth, screenHeight);
             }
             else
             {
+                player.Update(controls, gameTime);
                 camera.Update(gameTime, player, screenWidth, screenHeight);
                 for (int j = 0; j < decorations.Count; j++ )
                     ((Decor)decorations[j]).Update(controls, gameTime);
@@ -219,43 +206,33 @@ namespace EndangeredSong
                 for (int i = 0; i < hidingPlaces.Count; i++)
                     ((HidingPlace)hidingPlaces[i]).Update(controls, gameTime, player, harmonians);
                 for (int k = 0; k < harmonians.Count; k++)
-                {
                     ((Harmonian)harmonians[k]).Update(controls, gameTime, player, b1);
-                    if (((Harmonian)harmonians[k]).getFound() && !((Harmonian)harmonians[k]).getAdded())
-                    {
-                        foundHarmonians.Add((Harmonian)harmonians[k]);
-                        ((Harmonian)harmonians[k]).setAdded(true);
-                    }
-                }
-                for (int a = 0; a < foundHarmonians.Count; a++)
-                {
-                    if (((Harmonian)foundHarmonians[a]).getDead() && !((Harmonian)harmonians[a]).getRemoved())
-                    {
-                        ((Harmonian)harmonians[a]).setRemoved(true);
-                    }
-                }
 
-                    b1.Update(controls, gameTime, player, harmonians);
-                player.Update(controls, gameTime);
+
+                b1.Update(controls, gameTime, player, harmonians);                
                 map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player, endPlaceRect);
                 
-
+                if(player.isDead())
+                {
+                    manager.setToGameOver();
+                    song1.Dispose();
+                    bioTrouble.Dispose();
+                }
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (elapsedTime%20 >= 5 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
-//                    songInstance.Volume = 0;
-//                    bioTrouble.Play();
+                    songInstance.Volume = 0;
+                    bioTrouble.Play();
                     b1.setPosition(new Vector2(rand.Next(0, 4000), rand.Next(0, 3000)));
-                    //b1.setPosition(new Vector2(player.getPosition().X, player.getPosition().Y));                    
                 }
 
                 if (elapsedTime % 20 >= 10) 
                 {
                     b1.disactivate();
-//                    songInstance.Volume = 1;
-//                    bioTrouble.Stop();
+                    songInstance.Volume = 1;
+                    bioTrouble.Stop();
                     elapsedTime = 0;
                 }
             }
@@ -272,10 +249,8 @@ namespace EndangeredSong
             GraphicsDevice.Clear(Color.DarkOliveGreen);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            if (!started)
-                menu.Draw(spriteBatch);
-            else if (player.getDead())
-                lose.Draw(spriteBatch);
+            if (!started || player.isDead())
+                manager.Draw(spriteBatch);
             else
             {
                 spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
@@ -290,13 +265,8 @@ namespace EndangeredSong
                     ((Harmonian)harmonians[k]).Draw(spriteBatch);
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
-
-               
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
 
-                //hardcoded winning place
-                
-                Console.WriteLine("drawing setar");
             }
                         
             spriteBatch.End();           

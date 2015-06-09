@@ -13,19 +13,17 @@ namespace EndangeredSong
 {
     class Harmonian : Sprite
     {
-        bool isHid;
-        bool isFound;
+        bool hidden;
+        bool found;
         int maxX;
         int maxY;
         int foundPosition;
         string songName;
-        bool hasPlayed;
         SoundEffect song;
         SoundEffectInstance s;
         Texture2D image;
-        bool isDead;
-        bool added;
-        bool removed;
+        bool dead;
+
 
         float timer = 24;         
         const float TIMER = 24;
@@ -38,14 +36,12 @@ namespace EndangeredSong
             this.dim.Y = height;
             this.maxX = maxX;
             this.maxY = maxY;
-            this.isHid = false;
-            this.isFound = false;
+            this.hidden = false;
+            this.found = false;
             this.foundPosition = -1;
             this.songName = sn;
-            this.hasPlayed = false;
-            this.isDead = false;
-            this.added = false;
-            this.removed = true;
+            this.dead = false;
+
 	    }
 
         public void LoadContent(ContentManager content)
@@ -57,49 +53,33 @@ namespace EndangeredSong
             s.Play();
         }
 
-        public bool getFound()
+        public bool isFound()
         {
-            return this.isFound;
+            return this.found;
         }
 
-        public bool getHid()
+        public bool isHid()
         {
-            return this.isHid;
+            return this.hidden;
         }
 
-        public bool getDead()
+        public bool isDead()
         {
-            return this.isDead;
+            return this.dead;
         }
-      
-        public bool getAdded() 
-        {
-            return this.added;
-        }
-        public void setAdded(bool a) 
-        {
-            this.added = a;
-        }
-        public bool getRemoved()
-        {
-            return this.removed;
-        }
-        public void setRemoved(bool x)
-        {
-            this.removed = x;
-        }
+
         public void setFound(bool b)
         {
-            this.isFound = b;
+            this.found = b;
         }
         public void setHid(bool b)
         {
-            this.isHid = b;
+            this.hidden = b;
         }
         public void Draw(SpriteBatch sb)
         {
 
-          if(!this.isHid && !this.isDead)
+          if(!this.hidden && !this.dead)
               sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
 
@@ -107,6 +87,7 @@ namespace EndangeredSong
         {
             float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
             timer -= elapsed;
+
             Move(controls, player);
             
             if (timer < 0)
@@ -114,12 +95,11 @@ namespace EndangeredSong
                 s.Play();
                 timer = TIMER;
             }
-            if (this.isFound && !b.isActive)
+            if (this.found && !b.isActive)
             {
                 s.Volume = 1;
-                this.isHid = player.isHidden();
             }
-            if (b.isActive)
+            if (b.isActive || player.isDead())
                 s.Volume = 0;
             }
 
@@ -127,14 +107,14 @@ namespace EndangeredSong
         {
             Vector2 direction = player.getPosition() - this.pos;
 
-            if (direction.Length() < 100 && !this.isFound)
+            if (direction.Length() < 100 && !this.found)
             {
                 this.foundPosition = player.getNumFound();
                 player.foundHarmonian();
-                this.isFound = true;
+                this.found = true;
             }
                 
-            if (this.isFound && !this.isHid)
+            if (this.found && !this.hidden)
             {
                 if (direction.Length() > 100)
                 {
@@ -152,7 +132,7 @@ namespace EndangeredSong
         }
        public void Die()
         {
-            this.isDead = true;
+            this.dead = true;
             s.Stop();
             Console.WriteLine("HARMONIAN DIED");
         }

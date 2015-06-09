@@ -37,11 +37,21 @@ namespace EndangeredSong
             pixels[(y * this.width) + x] = new Color(c.R, c.G, c.B, c.A);                
         }
 
-        public void Update(GraphicsDevice g, ArrayList hidingPlaces, ArrayList harmonians, ArrayList water, BIOAgent bio, Player player)
+        public void Update(GraphicsDevice g, ArrayList hidingPlaces, ArrayList harmonians, ArrayList water, BIOAgent bio, Player player, Rectangle rect)
         {
             int x1, x2, y1, y2;
 
             this.setAllPixels(System.Drawing.Color.DarkGreen);
+
+            x1 = rect.X / 20;
+            x2 = (x1) + rect.Width/20;
+            y1 = rect.Y / 20;
+            y2 = (y1) + rect.Height/20;
+
+            for (int x = x1; x < x2; x++)
+                for (int y = y1; y < y2; y++)
+                    this.setPixel(x, y, System.Drawing.Color.Yellow);
+
 
             for(int i = 0; i < hidingPlaces.Count; i++)
             {                
