@@ -241,7 +241,7 @@ namespace EndangeredSong
                     b1.activate();
                     songInstance.Volume = 0;
                     bioTrouble.Play();
-                    b1.spawn();
+                    b1.spawn(player);
                 }
 
                 if (elapsedTime >= 12) 
