@@ -20,6 +20,8 @@ namespace EndangeredSong
         int numFound;
         Texture2D image;
         bool dead;
+        Vector2 origin;
+        bool flipped;
         
         public Player (int x, int y, int width, int height, int maxX, int maxY)
 	    {
@@ -36,8 +38,9 @@ namespace EndangeredSong
 
             followingPositions = new int[8, 2] {{-60, -60},{0, -80},{60, -60},{80, 0},{60, 60},{0, 80},{-60, 60},{-80, 0}};
             numFound = 0;
-
+            origin = new Vector2(this.dim.X / 2, this.dim.Y / 2);
             this.dead = false;
+            angle = 0;
 	    }
        
         public int getNumFound()
@@ -71,8 +74,10 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-            if(!this.isHid && !this.dead)
-                sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+            if(!this.isHid && !this.dead && flipped)
+                sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
+            if (!this.isHid && !this.dead && !flipped)
+                sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
         }
 
         public void Update(Controls controls, GameTime gameTime, ArrayList obstacles)
@@ -188,6 +193,11 @@ namespace EndangeredSong
                     this.pos.X += (int)(direction.X * 6);
                 if (updateY)
                     this.pos.Y += (int)(direction.Y * 6);
+
+                if (direction.X > 0)
+                    flipped = true;
+                else
+                    flipped = false;
             }
             
         }

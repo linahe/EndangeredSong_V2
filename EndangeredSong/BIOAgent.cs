@@ -24,6 +24,9 @@ namespace EndangeredSong
         const float timer = 0.10f;
         int frames = 0;
         const int FRAMES = 3;
+        float moveTimer = 2;
+        float distance = 1000;
+        Random rand;
         Texture2D frame1;
         Texture2D frame2;
         Texture2D frame3;
@@ -38,6 +41,7 @@ namespace EndangeredSong
             this.maxY = maxY;
             this.frameRate = 1;
             this.isActive = false;
+            rand = new Random();
 	    }
         
         public void LoadContent(ContentManager content)
@@ -72,9 +76,18 @@ namespace EndangeredSong
         {
             this.isActive = false;
         }
-        public void notActive()
-        { 
-        
+        public void spawn(Player player)
+        {
+
+            distance = Math.Abs((player.getPosition() - pos).Length());
+            while(distance > 900 || distance < 600)
+            {
+
+                this.setPosition(rand.Next(0, 4000), rand.Next(0, 3000));
+                distance = (player.getPosition() - pos).Length();
+            }
+
+            
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
@@ -109,7 +122,7 @@ namespace EndangeredSong
                 direction.Normalize();
             }
             if(player.isHidden())
-                this.pos = this.pos - direction * 6;
+                this.pos = this.pos - direction * 3;
             else
                 this.pos = this.pos + direction * 6;
         }

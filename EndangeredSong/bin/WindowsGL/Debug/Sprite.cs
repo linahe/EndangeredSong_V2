@@ -28,6 +28,11 @@ namespace EndangeredSong
         {
             this.pos = newPos;
         }
+        public void setPosition(int x, int y)
+        {
+            this.pos.X = x;
+            this.pos.Y = y;
+        }
         public void setDimensions(Vector2 newDim)
         {
             this.dim = newDim;
