@@ -48,7 +48,7 @@ namespace EndangeredSong
         int[,] coordPlaces;
         Texture2D endPlace;
         Rectangle endPlaceRect;
-
+        Texture2D landscape;
 
         SoundEffect song1;
         
@@ -83,7 +83,7 @@ namespace EndangeredSong
             hidingPlaces = new ArrayList();
             decorations = new ArrayList();
             water = new ArrayList();
-
+            landscape = Content.Load<Texture2D>("landscape.png");
             
             coordPlaces = new int[12, 3] { { 150, 2700, 3 }, { 700, 2400, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1200, 2700, 3} , { 2000, 2000, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
                                          {3600, 1300, 3 } , { 3800, 2800, 2} };
@@ -270,6 +270,7 @@ namespace EndangeredSong
                 manager.Draw(spriteBatch);
             else
             {
+                spriteBatch.Draw(landscape, new Rectangle(-500, -500, 5000, 4000), Color.White);
                 spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
 
                 for (int j = 0; j < decorations.Count; j++)
