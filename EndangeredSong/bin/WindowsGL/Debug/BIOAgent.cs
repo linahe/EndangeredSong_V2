@@ -18,8 +18,8 @@ namespace EndangeredSong
 	    int maxX;
         int maxY;
         public bool isActive;
-
-        
+        bool flipped = false;
+        Vector2 origin;
         float frameRate = 0.10f;
         const float timer = 0.10f;
         int frames = 0;
@@ -41,6 +41,8 @@ namespace EndangeredSong
             this.maxY = maxY;
             this.frameRate = 1;
             this.isActive = false;
+            origin = new Vector2(this.dim.X / 2, this.dim.Y / 2);
+
             rand = new Random();
 	    }
         
@@ -56,16 +58,27 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-            if (isActive)
+            if (isActive && flipped)
             {
                 if(frames == 0)
-                    sb.Draw(frame1, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                    sb.Draw(frame1, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
                 if (frames == 1)
-                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
                 if (frames == 2)
-                    sb.Draw(frame3, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                    sb.Draw(frame3, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
                 if (frames == 3)
-                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
+            }
+            else if (isActive && !flipped)
+            {
+                if (frames == 0)
+                    sb.Draw(frame1, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
+                if (frames == 1)
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
+                if (frames == 2)
+                    sb.Draw(frame3, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
+                if (frames == 3)
+                    sb.Draw(frame2, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
             }
         }     
         public void activate()
@@ -121,8 +134,17 @@ namespace EndangeredSong
             {
                 direction.Normalize();
             }
-            if(player.isHidden())
+            
+            if (direction.X > 0)
+                flipped = true;
+            else
+                flipped = false;
+
+            if (player.isHidden())
+            {
                 this.pos = this.pos - direction * 3;
+                flipped = !flipped;
+            }
             else
                 this.pos = this.pos + direction * 6;
         }

@@ -23,6 +23,8 @@ namespace EndangeredSong
         SoundEffectInstance s;
         Texture2D image;
         bool dead;
+        Vector2 origin;
+        bool flipped = false;
 
 
         float timer = 24;         
@@ -78,8 +80,11 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-          if(!this.hidden && !this.dead)
-              sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
+          
+          if (!this.hidden && !this.dead && flipped)
+              sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
+          else if (!this.hidden && !this.dead && !flipped)
+              sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
         }
 
         public void Update(Controls controls, GameTime gameTime, Player player, BIOAgent b)
@@ -120,6 +125,10 @@ namespace EndangeredSong
                     direction += player.getFollowingPosition(this.foundPosition % 8);
                     direction.Normalize();
                     this.pos = this.pos + direction * 6;
+                    if (direction.X > 0)
+                        flipped = true;
+                    else
+                        flipped = false;
                 }
             }
         }

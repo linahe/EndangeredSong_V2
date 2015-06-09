@@ -40,7 +40,6 @@ namespace EndangeredSong
             numFound = 0;
             origin = new Vector2(this.dim.X / 2, this.dim.Y / 2);
             this.dead = false;
-            angle = 0;
 	    }
        
         public int getNumFound()
@@ -76,7 +75,7 @@ namespace EndangeredSong
         {
             if(!this.isHid && !this.dead && flipped)
                 sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.FlipHorizontally, 0f);
-            if (!this.isHid && !this.dead && !flipped)
+            else if (!this.isHid && !this.dead && !flipped)
                 sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), null, Color.White, 0, origin, SpriteEffects.None, 0f);
         }
 
@@ -196,7 +195,7 @@ namespace EndangeredSong
 
                 if (direction.X > 0)
                     flipped = true;
-                else
+                else if (direction.X < 0)
                     flipped = false;
             }
             
