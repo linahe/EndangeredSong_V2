@@ -30,7 +30,7 @@ namespace EndangeredSong
         {
             mainMenu = content.Load<Texture2D>("menubackground");
             gameOver = content.Load<Texture2D>("GameOverScreen");
-            gameWon = content.Load<Texture2D>("");
+            //gameWon = content.Load<Texture2D>("");
             rect = new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
             activeScreen = mainMenu;
         }
