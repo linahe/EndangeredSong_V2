@@ -105,8 +105,21 @@ namespace EndangeredSong
             }
 
             for (int i = 0; i < 12; i++)    
-            {                
-                HidingPlace p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i,1], 400, 500, coordPlaces[i, 2]);                
+            {
+                HidingPlace p;
+                int x;
+                int y;
+                if (coordPlaces[i, 2] == 3)
+                {
+                    x = 400;
+                    y = 500;
+                }
+                else
+                {
+                    x = 650;
+                    y = 600;
+                }
+                p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i, 1], x, y, coordPlaces[i, 2]);
                 hidingPlaces.Add(p);
             }
             for (int k = 0; k < 3; k++)
