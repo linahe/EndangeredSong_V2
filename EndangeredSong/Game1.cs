@@ -197,7 +197,7 @@ namespace EndangeredSong
             }
             else
             {
-                player.Update(controls, gameTime);
+                player.Update(controls, gameTime, water);
                 camera.Update(gameTime, player, screenWidth, screenHeight);
                 for (int j = 0; j < decorations.Count; j++ )
                     ((Decor)decorations[j]).Update(controls, gameTime);
