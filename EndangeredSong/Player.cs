@@ -75,11 +75,11 @@ namespace EndangeredSong
                 sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
 
-        public void Update(Controls controls, GameTime gameTime)
+        public void Update(Controls controls, GameTime gameTime, ArrayList obstacles)
         {
             if (!this.dead)
             {
-                Move(controls);
+                Move(controls, obstacles);
             }
         }
 
@@ -146,7 +146,7 @@ namespace EndangeredSong
             this.dead = true;
         }
 
-        public void Move(Controls controls)
+        public void Move(Controls controls, ArrayList obstacles)
         {
 
             if(!this.isHid)
@@ -165,10 +165,17 @@ namespace EndangeredSong
                 if (Math.Abs((int)direction.Y) > 0)
                     if (Math.Abs((int)direction.X) > 0)
                         direction.Normalize();
+            
+            Vector2 oldPos = this.pos;
 
             this.pos.X += (int)(direction.X * 6);
             this.pos.Y += (int)(direction.Y * 6);
-            }
+
+            //for (int i = 0; i < obstacles.Count; i++)
+            //{
+                
+            //}
+            //}
             
         }
 
