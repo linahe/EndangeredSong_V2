@@ -165,7 +165,7 @@ namespace EndangeredSong
                 if (Math.Abs((int)direction.Y) > 0)
                     if (Math.Abs((int)direction.X) > 0)
                         direction.Normalize();
-               
+
                 Vector2 newX = this.pos;
                 Vector2 newY = this.pos;
 
@@ -188,7 +188,6 @@ namespace EndangeredSong
                     this.pos.X += (int)(direction.X * 6);
                 if (updateY)
                     this.pos.Y += (int)(direction.Y * 6);
-
             }
             
         }

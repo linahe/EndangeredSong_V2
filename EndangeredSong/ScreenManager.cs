@@ -11,9 +11,10 @@ namespace EndangeredSong
 {
     class ScreenManager:Sprite
     {
+       
         private Texture2D mainMenu;
         private Texture2D gameOver;
-        //private Texture2D gameWon;
+        private Texture2D gameWon;
         //private Texture2D instructions;
         private Texture2D activeScreen;
         private Rectangle rect;
@@ -29,6 +30,7 @@ namespace EndangeredSong
         {
             mainMenu = content.Load<Texture2D>("menubackground");
             gameOver = content.Load<Texture2D>("GameOverScreen");
+            //gameWon = content.Load<Texture2D>("");
             rect = new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
             activeScreen = mainMenu;
         }
@@ -39,6 +41,10 @@ namespace EndangeredSong
         public void setToGameOver()
         {
             activeScreen = gameOver;
+        }
+        public void setToGameWon()
+        {
+            activeScreen = gameWon;
         }
 
         public void Draw(SpriteBatch spriteBatch)
