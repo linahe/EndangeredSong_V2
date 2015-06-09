@@ -81,7 +81,6 @@ namespace EndangeredSong
 
             if (this.isActive && this.intersects(player) && !(player.isHidden())) //if bioAgents intersects with player
             {
-                Debug.WriteLine(this.intersects(player));
                 player.Die();
                 player.deadHarmonians(this, harmonians);
             }
@@ -108,8 +107,11 @@ namespace EndangeredSong
             if (direction.Length() > 10)
             {
                 direction.Normalize();
-                this.pos = this.pos + direction * 6;
             }
+            if(player.isHidden())
+                this.pos = this.pos - direction * 6;
+            else
+                this.pos = this.pos + direction * 6;
         }
 
         public void Animate()

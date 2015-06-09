@@ -18,7 +18,7 @@ namespace EndangeredSong
         SpriteBatch spriteBatch;
         Controls controls;
 
-        bool started;
+
         Camera camera;
         MiniMap map;
         ScreenManager manager;
@@ -93,8 +93,6 @@ namespace EndangeredSong
             manager = new ScreenManager(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
 
-
-            started = false;
 
             controls = new Controls();
             rand = new Random();
@@ -187,12 +185,11 @@ namespace EndangeredSong
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-            if(Keyboard.GetState().IsKeyDown(Keys.Space))
-                started = true;
 
             controls.Update();
-            if(!started || player.isDead())                    
+            if(!manager.isOnMainGame() || player.isDead())                    
             {
+                manager.Update(gameTime, controls);
                 camera.Update(gameTime, manager, screenWidth, screenHeight);
             }
             else
@@ -211,11 +208,12 @@ namespace EndangeredSong
 
                 b1.Update(controls, gameTime, player, harmonians);                
                 map.Update(graphics.GraphicsDevice, hidingPlaces, harmonians, water, b1, player, endPlaceRect);
-                //             Amax = new Vector2(this.pos.X + this.dim.X, this.pos.Y);
-                
+               
                 if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
                 {
                     manager.setToGameWon();
+                    song1.Dispose();
+                    bioTrouble.Dispose();
                 }
                 if(player.isDead())
                 {
@@ -225,7 +223,7 @@ namespace EndangeredSong
                 }
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
-                if (elapsedTime%20 >= 5 && !b1.isOnScreen() ) // add bool?
+                if (elapsedTime >= 5 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
                     songInstance.Volume = 0;
@@ -233,7 +231,7 @@ namespace EndangeredSong
                     b1.setPosition(new Vector2(rand.Next(0, 4000), rand.Next(0, 3000)));
                 }
 
-                if (elapsedTime % 20 >= 10) 
+                if (elapsedTime >= 12) 
                 {
                     b1.disactivate();
                     songInstance.Volume = 1;
@@ -255,7 +253,7 @@ namespace EndangeredSong
             GraphicsDevice.Clear(Color.DarkOliveGreen);
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
-            if (!started || player.isDead())
+            if (!manager.isOnMainGame() || player.isDead())
                 manager.Draw(spriteBatch);
             else
             {
