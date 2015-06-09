@@ -165,17 +165,31 @@ namespace EndangeredSong
                 if (Math.Abs((int)direction.Y) > 0)
                     if (Math.Abs((int)direction.X) > 0)
                         direction.Normalize();
-            
-            Vector2 oldPos = this.pos;
+               
+                Vector2 newX = this.pos;
+                Vector2 newY = this.pos;
 
-            this.pos.X += (int)(direction.X * 6);
-            this.pos.Y += (int)(direction.Y * 6);
+                newX.X += (int)(direction.X * 6);
+                newY.Y += (int)(direction.Y * 6);
 
-            //for (int i = 0; i < obstacles.Count; i++)
-            //{
-                
-            //}
-            //}
+                bool updateX, updateY;
+                updateX = true;
+                updateY = true;
+
+                for (int i = 0; i < obstacles.Count; i++)
+                {
+                    if (((Water)obstacles[i]).intersects(newX, this.dim))
+                        updateX = false;
+                    if (((Water)obstacles[i]).intersects(newY, this.dim))
+                        updateY = false;
+                }
+
+                if (updateX)
+                    this.pos.X += (int)(direction.X * 6);
+                if (updateY)
+                    this.pos.Y += (int)(direction.Y * 6);
+
+            }
             
         }
 
