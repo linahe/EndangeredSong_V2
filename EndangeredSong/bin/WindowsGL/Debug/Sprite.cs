@@ -43,6 +43,17 @@ namespace EndangeredSong
 
             return !(Amax.X < Bmin.X || Bmax.X < Amin.X || Amax.Y > Bmin.Y || Bmax.Y > Amin.Y);
         }
+        public bool intersects(Vector2 p, Vector2 d)
+        {
+            Vector2 Amax, Bmax, Amin, Bmin;
+            Amax = new Vector2(this.pos.X + this.dim.X, this.pos.Y);
+            Amin = new Vector2(this.pos.X, this.pos.Y + this.dim.Y);
+            Bmax = new Vector2(p.X + d.X, p.Y);
+            Bmin = new Vector2(p.X, p.Y + d.Y);
+
+            return !(Amax.X < Bmin.X || Bmax.X < Amin.X || Amax.Y > Bmin.Y || Bmax.Y > Amin.Y);
+        }
+
 	}
 }
 

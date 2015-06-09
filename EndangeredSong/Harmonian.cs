@@ -78,7 +78,6 @@ namespace EndangeredSong
         }
         public void Draw(SpriteBatch sb)
         {
-
           if(!this.hidden && !this.dead)
               sb.Draw(image, new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y), Color.White);
         }
@@ -125,7 +124,6 @@ namespace EndangeredSong
             }
         }
 
-        //These are method stubs that may be necessary.
         public void BIOAgentsAreComing(BIOAgent bioagent)
         {
                 s.Volume = 0;
