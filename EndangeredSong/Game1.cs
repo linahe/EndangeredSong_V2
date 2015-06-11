@@ -49,6 +49,7 @@ namespace EndangeredSong
         Texture2D endPlace;
         Rectangle endPlaceRect;
         Texture2D landscape;
+        Texture2D legend;
 
         SoundEffect song1;
         
@@ -84,7 +85,8 @@ namespace EndangeredSong
             decorations = new ArrayList();
             water = new ArrayList();
             landscape = Content.Load<Texture2D>("landscape.png");
-            
+            legend = Content.Load<Texture2D>("legend.png");
+
             coordPlaces = new int[12, 3] { { 150, 2700, 3 }, { 700, 2400, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1200, 2700, 3} , { 2000, 2000, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
                                          {3600, 1300, 3 } , { 3800, 2800, 2} };
 
@@ -171,7 +173,7 @@ namespace EndangeredSong
             Content.RootDirectory = "Content";
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
-
+            
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
             manager.LoadContent(this.Content);
@@ -285,6 +287,7 @@ namespace EndangeredSong
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
+                spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 200), Color.White);
                 spriteBatch.DrawString(font, "Score: " + player.getNumFound(), new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.Black);
 
 
