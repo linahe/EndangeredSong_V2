@@ -275,3 +275,4 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\Endangere
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\EndangeredSong.pdb
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\obj\x86\Debug\EndangeredSong.csprojResolveAssemblyReference.cache
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\legend.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\landscape.png

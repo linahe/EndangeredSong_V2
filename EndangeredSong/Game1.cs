@@ -273,7 +273,7 @@ namespace EndangeredSong
                 manager.Draw(spriteBatch);
             else
             {
-                spriteBatch.Draw(landscape, new Rectangle(-500, -500, 5000, 4000), Color.White);
+                spriteBatch.Draw(landscape, new Rectangle(-500, -500, 5000, 6000), Color.White);
                 spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
 
                 for (int j = 0; j < decorations.Count; j++)
