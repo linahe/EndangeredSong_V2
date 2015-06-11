@@ -201,7 +201,6 @@ C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\D
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Controls.cs
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\HidingPlace.cs
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Sprite.cs
-C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\Harmonian1.xnb
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\MiniMap.cs
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\BIOAgentConceptArt2.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\BIOAgentConceptArt3.png
@@ -219,3 +218,6 @@ C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\D
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction1.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction2.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction3.png
+C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\font.spritefont
+C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\Harmonian1.xnb
+C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\font.xnb

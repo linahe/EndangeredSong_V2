@@ -210,6 +210,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\WindowsGL\Debug\EndangeredSong.vshost.exe.manifest" />
+    <Content Include="Content\font.spritefont">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\font.xnb">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="obj\x86\Debug\build.force" />
     <None Include="obj\x86\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\x86\Debug\EndangeredSong.csprojResolveAssemblyReference.cache" />

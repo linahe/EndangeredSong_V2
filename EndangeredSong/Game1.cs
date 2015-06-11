@@ -17,7 +17,7 @@ namespace EndangeredSong
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
         Controls controls;
-
+        SpriteFont font;
 
         Camera camera;
         MiniMap map;
@@ -77,7 +77,7 @@ namespace EndangeredSong
             dimY = GraphicsDevice.Viewport.Bounds.Height;
 
 
-
+            
             endPlaceRect = new Rectangle(3800, 200, 200, 200);
             harmonians = new ArrayList();
             hidingPlaces = new ArrayList();
@@ -170,6 +170,7 @@ namespace EndangeredSong
         {
             Content.RootDirectory = "Content";
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            font = Content.Load<SpriteFont>("font");
 
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
@@ -284,6 +285,8 @@ namespace EndangeredSong
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
+                spriteBatch.DrawString(font, "Score: " + player.getNumFound(), new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.Black);
+
 
             }
                         
