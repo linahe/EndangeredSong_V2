@@ -141,7 +141,7 @@ namespace EndangeredSong
                 if (animationTimer <= 0 && firstDone == false)
                 {
                     if (opacity1 <= 1.0f)
-                        opacity1 = opacity1 + 0.2f;
+                        opacity1 = opacity1 + 0.1f;
                     else
                     {
                         animationTimer = 2;
@@ -151,7 +151,7 @@ namespace EndangeredSong
                 else if (animationTimer <= 0 && secondDone == false)
                 {
                     if (opacity2 <= 1.0f)
-                        opacity2 = opacity2 + 0.2f;
+                        opacity2 = opacity2 + 0.1f;
                     else
                     {
                         animationTimer = 2;
@@ -161,7 +161,7 @@ namespace EndangeredSong
                 else if (animationTimer <= 0 && thirdDone == false)
                 {
                     if (opacity3 <= 1.0f)
-                        opacity3 = opacity3 + 0.2f;
+                        opacity3 = opacity3 + 0.1f;
                     else
                     {
                         animationTimer = 2;
@@ -171,7 +171,7 @@ namespace EndangeredSong
                 else if (animationTimer <= 0 && fourthDone == false)
                 {
                     if (opacity4 <= 1.0)
-                        opacity4 = opacity4 + 0.2f;
+                        opacity4 = opacity4 + 0.1f;
                     else
                     {
                         animationTimer = 2;
