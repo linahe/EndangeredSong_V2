@@ -46,6 +46,7 @@ namespace EndangeredSong
         int screenHeight;
         double elapsedTime;
         int[,] coordPlaces;
+        int[,] coordWater;
         Texture2D endPlace;
         Rectangle endPlaceRect;
         Texture2D landscape;
@@ -88,11 +89,11 @@ namespace EndangeredSong
             landscape = Content.Load<Texture2D>("landscape.png");
             legend = Content.Load<Texture2D>("legend.png");
 
-            coordPlaces = new int[12, 3] { { 150, 2700, 3 }, { 700, 2400, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1200, 2700, 3} , { 2000, 2000, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
+            coordPlaces = new int[12, 3] { { 250, 2400, 3 }, { 700, 2200, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1300, 2500, 3} , { 2000, 2200, 2 },  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
                                          {3600, 1300, 3 } , { 3800, 2800, 2} };
-
-            player = new Player(100, 1800, harmoniansizeX, harmoniansizeY, dimX, dimY);
-            b1 = new BIOAgent(400, 200, 200, 350, dimX, dimY);
+            coordWater = new int[2, 2] { { 800, 2700 }, { 2000, 2600 } };
+            player = new Player(300, 2100, harmoniansizeX, harmoniansizeY, dimX, dimY);
+            b1 = new BIOAgent(300, 2100, 200, 350, dimX, dimY);
             manager = new ScreenManager(0, 0, screenWidth, screenHeight);
             map = new MiniMap(200, 150, graphics.GraphicsDevice);
 
@@ -125,19 +126,19 @@ namespace EndangeredSong
                 p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i, 1], x, y, coordPlaces[i, 2]);
                 hidingPlaces.Add(p);
             }
-            for (int k = 0; k < 3; k++)
+            for (int k = 0; k < 2; k++)
             {
-                Water w = new Water(rand.Next(0, dimX - 100), rand.Next(0, dimY - 100), 450, 200);
+                Water w = new Water(coordWater[k,0], coordWater[k,1], 450, 200);
                 water.Add(w);
             }
 
-            Harmonian h1 = new Harmonian(700, 1900, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian1");
+            Harmonian h1 = new Harmonian(800, 1700, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian1");
             harmonians.Add(h1);
             Harmonian h2 = new Harmonian(900, 400, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian3");
             harmonians.Add(h2);
-            Harmonian h3 = new Harmonian(1300, 2500, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian4");
+            Harmonian h3 = new Harmonian(1300, 2700, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian4");
             harmonians.Add(h3);
-            Harmonian h4 = new Harmonian(2000, 2600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian5");
+            Harmonian h4 = new Harmonian(1900, 2500, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian5");
             harmonians.Add(h4);
             Harmonian h5 = new Harmonian(2800, 2300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian6");
             harmonians.Add(h5);
@@ -145,22 +146,22 @@ namespace EndangeredSong
             harmonians.Add(h6);
             Harmonian h7 = new Harmonian(3400, 1600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian8");
             harmonians.Add(h7);
-            Harmonian h8 = new Harmonian(500, 600, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian9");
+            Harmonian h8 = new Harmonian(650, 2300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian9");
             harmonians.Add(h8);
             Harmonian h9 = new Harmonian(2500, 1200, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian10");
             harmonians.Add(h9);
             Harmonian h10 = new Harmonian(700, 300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian11");
             harmonians.Add(h10);
 
-            song1 = Content.Load<SoundEffect>(@"1Music");
+            //song1 = Content.Load<SoundEffect>(@"1Music");
 
-            songInstance = song1.CreateInstance();
-            songInstance.IsLooped = true;
-            songInstance.Play();
+            //songInstance = song1.CreateInstance();
+            //songInstance.IsLooped = true;
+            //songInstance.Play();
 
 
-            BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
-            bioTrouble = BIOAgentTheme.CreateInstance();
+            //BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
+            //bioTrouble = BIOAgentTheme.CreateInstance();
             
             base.Initialize();
         }
@@ -229,30 +230,30 @@ namespace EndangeredSong
                 if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
                 {
                     manager.setToGameWon();
-                    song1.Dispose();
-                    bioTrouble.Dispose();
+//                    song1.Dispose();
+//                    bioTrouble.Dispose();
                 }
                 if(player.isDead())
                 {
                     manager.setToGameOver();
-                    song1.Dispose();
-                    bioTrouble.Dispose();
+//                    song1.Dispose();
+//                    bioTrouble.Dispose();
                 }
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (elapsedTime >= 8 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
-                    songInstance.Volume = 0;
-                    bioTrouble.Play();
+                    //songInstance.Volume = 0;
+                    //bioTrouble.Play();
                     b1.spawn(player);
                 }
 
                 if (elapsedTime >= 15) 
                 {
                     b1.disactivate();
-                    songInstance.Volume = 1;
-                    bioTrouble.Stop();
+                    //songInstance.Volume = 1;
+                    //bioTrouble.Stop();
                     elapsedTime = 0;
                 }
                 
