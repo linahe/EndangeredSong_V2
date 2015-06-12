@@ -45,6 +45,7 @@ namespace EndangeredSong
         private Texture2D gameWon1a;
         private Texture2D gameWon1b;
         private Texture2D gameWon2;
+        private Texture2D gameWon3;
         private Texture2D glow;
         private Texture2D instructions1;
         private Texture2D instructions2;

@@ -285,7 +285,7 @@ namespace EndangeredSong
                     if(time == -1)
                         time = gameTime.TotalGameTime.Seconds;
                     spriteBatch.DrawString(font, "Score: " + score, new Vector2(screenWidth/2 - 200, screenHeight/2 - 100), Color.Black);
-                    spriteBatch.DrawString(font, "Time Elapsed: " + time, new Vector2(screenWidth/2 - 200, screenHeight/2 - 50), Color.Black);
+                    spriteBatch.DrawString(font, "Time Elapsed: " + time + " seconds", new Vector2(screenWidth/2 - 200, screenHeight/2 - 50), Color.Black);
                 }
             }
             else
