@@ -25,12 +25,25 @@ namespace EndangeredSong
         private float opacity4 = 0.0f;
         private float opacity5 = 0.0f;
         private float opacity6 = 0.0f;
+
+        private bool firstWonDone = false;
+        private bool secondWonDone = false;
+        private bool thirdWonDone = false;
+        private float opacityWon1 = 0.0f;
+        private float opacityWon2 = 0.0f;
+        private float opacityWon3 = 0.0f;
         private bool oscillation = false;
         SpriteFont font;
 
         private Texture2D mainMenu;
         private Texture2D gameOver;
-        private Texture2D gameWon;
+
+        private Texture2D gameWon1;
+        private Texture2D gameWon1a;
+        private Texture2D gameWon1b;
+        private Texture2D gameWon1c;
+        private Texture2D gameWon2;
+
         private Texture2D instructions1;
         private Texture2D instructions2;
         private Texture2D instructions3;
@@ -56,7 +69,10 @@ namespace EndangeredSong
             mainMenu = content.Load<Texture2D>("menubackground");
             narrative1 = content.Load<Texture2D>("narrative");
             gameOver = content.Load<Texture2D>("GameOverScreen");
-            gameWon = content.Load<Texture2D>("winscreen");
+            gameWon1 = content.Load<Texture2D>("winscreen1");
+            gameWon1a = content.Load<Texture2D>("winscreen1a");
+            gameWon1b = content.Load<Texture2D>("winscreen1b");
+            gameWon2 = content.Load<Texture2D>("winscreen");
             instructions1 = content.Load<Texture2D>("instruction1");
             instructions2 = content.Load<Texture2D>("instruction2");
             instructions3 = content.Load<Texture2D>("instruction3");
@@ -84,7 +100,8 @@ namespace EndangeredSong
         }
         public void setToGameWon()
         {
-            activeScreen = gameWon;
+            animationTimer = 2;
+            activeScreen = gameWon1;
             onMainGame = false;
             onWinScreen = true;
         }
@@ -223,7 +240,41 @@ namespace EndangeredSong
                         this.activeScreen = instructions3;
                 }
             }
-            
+            else if(onWinScreen)
+            {
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                animationTimer -= elapsed;
+                if (animationTimer <= 0 && !firstWonDone)
+                {
+                    if(opacityWon1 <= 1.0)
+                        opacityWon1 = opacityWon1 + 0.1f;
+                    else
+                    {
+                        animationTimer = 2;
+                        firstWonDone = true;
+                    }
+                }
+                else if (animationTimer <= 0 && !secondWonDone)
+                {
+                    if (opacity2 <= 1.0)
+                        opacityWon2 = opacityWon2 + 0.1f;
+                    else
+                    {
+                        animationTimer = 2;
+                        secondWonDone = true;
+                    }
+                }
+                else if (animationTimer <= 0 && !thirdWonDone)
+                {
+                    if (opacity3 <= 1.0)
+                        opacityWon3 = opacityWon3 + 0.1f;
+                    else
+                    {
+                        animationTimer = 2;
+                        thirdWonDone = true;
+                    }
+                }
+            }
 
         }
         public void Draw(SpriteBatch spriteBatch)
@@ -237,6 +288,11 @@ namespace EndangeredSong
                 spriteBatch.DrawString(font, "As more Harmonians die off, the music is disappearing...", new Vector2(140, 170), Color.White* opacity4);
                 spriteBatch.DrawString(font, "Please... save the Endangered Song...", new Vector2(170, 210), Color.White * opacity5);
                 spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity6);
+            }
+            if (onWinScreen)
+            {
+                spriteBatch.Draw(gameWon1a, rect, Color.White * opacityWon1);
+                spriteBatch.Draw(gameWon1b, rect, Color.White * opacityWon2);
             }
         }
         public void CenterElement(int height, int width)

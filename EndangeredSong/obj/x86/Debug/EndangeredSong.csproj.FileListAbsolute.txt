@@ -282,3 +282,6 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\Endangere
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative.png
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\death.wav
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\sunlight.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1a.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1b.png
