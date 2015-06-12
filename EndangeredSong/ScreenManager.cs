@@ -12,15 +12,17 @@ namespace EndangeredSong
     class ScreenManager:Sprite
     {
         private Texture2D narrative1;
-        bool firstDone = false;
-        bool secondDone = false;
-        bool thirdDone = false;
-        bool fourthDone = false;
+        private bool firstDone = false;
+        private bool secondDone = false;
+        private bool thirdDone = false;
+        private bool fourthDone = false;
         private float animationTimer = 2;
         private float opacity1 = 0.0f;
         private float opacity2 = 0.0f;
         private float opacity3 = 0.0f;
         private float opacity4 = 0.0f;
+        private float opacity5 = 0.0f;
+        private bool oscillation = false;
         SpriteFont font;
 
         private Texture2D mainMenu;
@@ -112,6 +114,8 @@ namespace EndangeredSong
                 this.activeScreen = instructions1;
             else return;
         }
+        //This method might help in cleaaning up the code.
+        /*
         public void increaseOpacity(float opacity, float time, bool done)
         {
             if (opacity <= 1.0f)
@@ -121,7 +125,7 @@ namespace EndangeredSong
                 time = 3;
                 done = true;
             }
-        }
+        }*/
         public void Update(GameTime gameTime, Controls controls)
         {
             if(onMainMenu)
@@ -140,7 +144,7 @@ namespace EndangeredSong
                         opacity1 = opacity1 + 0.2f;
                     else
                     {
-                        animationTimer = 3;
+                        animationTimer = 2;
                         firstDone = true;
                     }
                 }
@@ -150,7 +154,7 @@ namespace EndangeredSong
                         opacity2 = opacity2 + 0.2f;
                     else
                     {
-                        animationTimer = 3;
+                        animationTimer = 2;
                         secondDone = true;
                     }
                 }
@@ -160,7 +164,7 @@ namespace EndangeredSong
                         opacity3 = opacity3 + 0.2f;
                     else
                     {
-                        animationTimer = 3;
+                        animationTimer = 2;
                         thirdDone = true;
                     }
                 }
@@ -168,6 +172,26 @@ namespace EndangeredSong
                 {
                     if (opacity4 <= 1.0)
                         opacity4 = opacity4 + 0.2f;
+                    else
+                    {
+                        animationTimer = 2;
+                        fourthDone = true;
+                    }
+                }
+                else if(animationTimer <= 0 && fourthDone == true)
+                {
+                    if (oscillation == false)
+                    {
+                        opacity5 = opacity5 + 0.02f;
+                        if (opacity5 > 1.0)
+                            oscillation = true;
+                    }
+                    else if(oscillation == true)
+                    {
+                        opacity5 = opacity5 - 0.02f;
+                        if (opacity5 < 0)
+                            oscillation = false;
+                    }
                 }
                 if (controls.onRelease(Keys.Space, Buttons.A))
                     this.setToInstructions();
@@ -203,6 +227,7 @@ namespace EndangeredSong
                 spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
                 spriteBatch.DrawString(font, "However, greedy humans began exploiting these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
                 spriteBatch.DrawString(font, "As more Harmonians die off, the music is disappearing...", new Vector2(140, 170), Color.White* opacity4);
+                spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity5);
             }
         }
         public void CenterElement(int height, int width)
