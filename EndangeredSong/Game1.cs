@@ -233,7 +233,7 @@ namespace EndangeredSong
 //                    song1.Dispose();
 //                    bioTrouble.Dispose();
                 }
-                if(player.isDead())
+                if(player.isDead()) 
                 {
                     manager.setToGameOver();
 //                    song1.Dispose();
