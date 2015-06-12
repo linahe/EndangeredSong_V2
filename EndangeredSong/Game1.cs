@@ -39,6 +39,9 @@ namespace EndangeredSong
         SoundEffectInstance bioTrouble;
         SoundEffect BIOAgentTheme;
 
+        SoundEffectInstance deathInstance;
+        SoundEffect death;
+
         Random rand;
         int dimX;
         int dimY;
@@ -158,8 +161,8 @@ namespace EndangeredSong
             //songInstance = song1.CreateInstance();
             //songInstance.IsLooped = true;
             //songInstance.Play();
-
-
+            death = Content.Load<SoundEffect>(@"death");
+            deathInstance = death.CreateInstance();
             //BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
             //bioTrouble = BIOAgentTheme.CreateInstance();
             
@@ -235,6 +238,7 @@ namespace EndangeredSong
                 }
                 if(player.isDead()) 
                 {
+                    deathInstance.Play();
                     manager.setToGameOver();
 //                    song1.Dispose();
 //                    bioTrouble.Dispose();
