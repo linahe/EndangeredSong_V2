@@ -288,3 +288,4 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\Endangere
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winningsunlight.png
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\canary.wav
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative2.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\mist.png
