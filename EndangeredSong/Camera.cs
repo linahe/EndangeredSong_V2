@@ -42,7 +42,7 @@ namespace EndangeredSong
             }
 
 
-            if (player.getPosition().Y + player.getDimension().Y / 2 >= screenHeight / 2 && player.getPosition().Y <= mapY - screenHeight / 2)
+            if (player.getPosition().Y + player.getDimension().Y / 2 >= screenHeight / 2 && player.getPosition().Y + player.getDimension().Y/2 <= mapY - screenHeight / 2)
             {
                 center.Y = player.getPosition().Y + (player.getDimension().Y / 2) - (screenHeight / 2);
             }
