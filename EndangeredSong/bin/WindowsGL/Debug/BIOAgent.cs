@@ -20,12 +20,13 @@ namespace EndangeredSong
         public bool isActive;
         bool flipped = false;
         Vector2 origin;
+        Vector2 wanderDirection;
         float frameRate = 0.10f;
         const float timer = 0.10f;
         int frames = 0;
         const int FRAMES = 3;
-        float moveTimer = 2;
         float distance = 1000;
+        float moveTimer = 1;
         Random rand;
         Texture2D frame1;
         Texture2D frame2;
@@ -42,6 +43,7 @@ namespace EndangeredSong
             this.frameRate = 1;
             this.isActive = false;
             origin = new Vector2(this.dim.X / 2, this.dim.Y / 2);
+            wanderDirection = new Vector2(1, 0);
 
             rand = new Random();
 	    }
@@ -104,54 +106,91 @@ namespace EndangeredSong
         }
         public void Update(Controls controls, GameTime gameTime, Player player, ArrayList harmonians)
         {
-
-            if (this.isActive && this.intersects(player) && !(player.isHidden())) //if bioAgents intersects with player
+            if (this.isActive)
             {
-                player.Die();
-                player.deadHarmonians(this, harmonians);
-            }
-
-            float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            frameRate -= elapsed;
-            if(frameRate < 0)
-            {
-                frames++;
-                if (frames > 3)
+                if (this.intersects(player) && !(player.isHidden())) //if bioAgents intersects with player
                 {
-                    frames = 0;
+                    player.Die();
+                    player.deadHarmonians(this, harmonians);
                 }
-                frameRate = timer;
+
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                frameRate -= elapsed;
+                if (frameRate < 0)
+                {
+                    frames++;
+                    if (frames > 3)
+                        frames = 0;
+                    frameRate = timer;
+                }
+
+                Move(controls, player, gameTime);
             }
-         
-            Move(controls, player);
         }
 
 
-        public void Move(Controls controls, Player player)
+        public void Move(Controls controls, Player player, GameTime gameTime)
         {
             Vector2 direction = player.getPosition() -  this.pos;
-            if (direction.Length() > 10)
+            int distance = (int)direction.Length();
+
+            if (distance > 10 && distance < 1000 && !player.isHidden())
             {
                 direction.Normalize();
-            }
-            
-            if (direction.X > 0)
-                flipped = true;
-            else
-                flipped = false;
-
-            if (player.isHidden())
-            {
-                this.pos = this.pos - direction * 3;
-                flipped = !flipped;
-            }
-            else
                 this.pos = this.pos + direction * 6;
+
+                if (direction.X > 0)
+                flipped = true;
+                else
+                flipped = false;
+            }
+
+            else
+                this.wander(gameTime);
+            
+
+
+
+            
         }
 
-        public void Animate()
+        public void wander(GameTime gameTime)
         {
+            this.moveTimer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+            if(this.moveTimer <= 0)
+            {
+                moveTimer = 1;
+                int caseSwitch = rand.Next(0, 4);
+                switch(caseSwitch)
+                {
+                    case 0:
+                        wanderDirection.X = 1;
+                        wanderDirection.Y = 0;
+                        break;
+                    case 1:
+                        wanderDirection.X = -1;
+                        wanderDirection.Y = 0;
+                        break;
+                    case 2:
+                        wanderDirection.X = 0;
+                        wanderDirection.Y = 1;
+                        break;
+                    case 3:
+                        wanderDirection.X = 0;
+                        wanderDirection.Y = -1;
+                        break;
+                }
 
+                if (wanderDirection.X > 0)
+                    flipped = true;
+                else
+                    flipped = false;
+            }
+            else
+            {
+                this.pos += wanderDirection * 5;
+
+            }
         }
     }
 }
