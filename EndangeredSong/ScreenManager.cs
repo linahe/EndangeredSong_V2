@@ -104,7 +104,7 @@ namespace EndangeredSong
         public void setToGameWon(int harmonians)
         {
             
-            if (harmonians == 1)
+            if (harmonians == 0)
             {
                 animationTimer = 2;
                 activeScreen = gameWon1;
