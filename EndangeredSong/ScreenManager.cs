@@ -38,12 +38,14 @@ namespace EndangeredSong
         private Texture2D mainMenu;
         private Texture2D gameOver;
 
+        private bool onGameWon1 = false;
+        private bool onGameWon2 = false;
+
         private Texture2D gameWon1;
         private Texture2D gameWon1a;
         private Texture2D gameWon1b;
-        private Texture2D gameWon1c;
         private Texture2D gameWon2;
-
+        private Texture2D glow;
         private Texture2D instructions1;
         private Texture2D instructions2;
         private Texture2D instructions3;
@@ -73,6 +75,7 @@ namespace EndangeredSong
             gameWon1a = content.Load<Texture2D>("winscreen1a");
             gameWon1b = content.Load<Texture2D>("winscreen1b");
             gameWon2 = content.Load<Texture2D>("winscreen");
+            glow = content.Load<Texture2D>("winningsunlight");
             instructions1 = content.Load<Texture2D>("instruction1");
             instructions2 = content.Load<Texture2D>("instruction2");
             instructions3 = content.Load<Texture2D>("instruction3");
@@ -98,10 +101,21 @@ namespace EndangeredSong
             onMainMenu = false;
             onNarrative = true;
         }
-        public void setToGameWon()
+        public void setToGameWon(int harmonians)
         {
-            animationTimer = 2;
-            activeScreen = gameWon1;
+            
+            if (harmonians == 1)
+            {
+                animationTimer = 2;
+                activeScreen = gameWon1;
+                onGameWon1 = true;
+            }
+            else
+            {
+                animationTimer = 4;
+                activeScreen = gameWon2;
+                onGameWon2 = true;
+            }
             onMainGame = false;
             onWinScreen = true;
         }
@@ -240,7 +254,7 @@ namespace EndangeredSong
                         this.activeScreen = instructions3;
                 }
             }
-            else if(onWinScreen)
+            else if(onGameWon1)
             {
                 float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
                 animationTimer -= elapsed;
@@ -274,6 +288,24 @@ namespace EndangeredSong
                         thirdWonDone = true;
                     }
                 }
+
+            }
+            else if (onGameWon2)
+            {
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                animationTimer -= elapsed;
+                if (oscillation == false)
+                {
+                    opacity6 = opacity6 + 0.005f;
+                    if (opacity6 > 0.2)
+                        oscillation = true;
+                }
+                else if (oscillation == true)
+                {
+                    opacity6 = opacity6 - 0.005f;
+                    if (opacity6 < 0.1)
+                        oscillation = false;
+                }
             }
 
         }
@@ -289,11 +321,13 @@ namespace EndangeredSong
                 spriteBatch.DrawString(font, "Please... save the Endangered Song...", new Vector2(170, 210), Color.White * opacity5);
                 spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity6);
             }
-            if (onWinScreen)
+            if (onGameWon1)
             {
                 spriteBatch.Draw(gameWon1a, rect, Color.White * opacityWon1);
                 spriteBatch.Draw(gameWon1b, rect, Color.White * opacityWon2);
             }
+            if (onGameWon2)
+                spriteBatch.Draw(glow, rect, Color.White * opacity6);
         }
         public void CenterElement(int height, int width)
         {

@@ -233,7 +233,7 @@ namespace EndangeredSong
                
                 if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
                 {
-                    manager.setToGameWon();
+                    manager.setToGameWon(player.getTotalDiscovered());
 //                    song1.Dispose();
 //                    bioTrouble.Dispose();
                 }
