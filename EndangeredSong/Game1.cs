@@ -290,7 +290,7 @@ namespace EndangeredSong
             }
             else
             {
-                spriteBatch.Draw(landscape, new Rectangle(-500, -500, 5000, 6000), Color.White);
+                spriteBatch.Draw(landscape, new Rectangle(-800, -500, 5000, 6000), Color.White);
                 spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
 
                 for (int j = 0; j < decorations.Count; j++)
@@ -306,7 +306,7 @@ namespace EndangeredSong
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
                 spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 125), Color.White);
                 spriteBatch.DrawString(font, "Score: " + player.getTotalDiscovered() * 100, new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.White);
-                spriteBatch.Draw(sunlight, new Rectangle((int)camera.center.X, (int)camera.center.Y, screenWidth, screenHeight), Color.Yellow*0.2f);
+                spriteBatch.Draw(sunlight, new Rectangle((int)camera.center.X, (int)camera.center.Y, screenWidth + 600+ (int)camera.center.X, screenHeight), Color.Yellow*0.2f);
                 if(elapsedTime >= 5 && elapsedTime < 8)
                 {
                     spriteBatch.DrawString(font, "A BIO Agent is coming! HIDE!" , new Vector2(camera.center.X + 400, camera.center.Y + 100), Color.Red);

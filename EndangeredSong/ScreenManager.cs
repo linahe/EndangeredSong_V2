@@ -12,6 +12,7 @@ namespace EndangeredSong
     class ScreenManager:Sprite
     {
         private Texture2D narrative1;
+        private Texture2D narrative2;
         private bool firstDone = false;
         private bool secondDone = false;
         private bool thirdDone = false;
@@ -225,7 +226,7 @@ namespace EndangeredSong
             {
                 spriteBatch.DrawString(font, "There was once a time when the musical Harmonians were happy.", new Vector2(50, 50), Color.White * opacity1);
                 spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
-                spriteBatch.DrawString(font, "However, greedy humans began exploiting these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
+                spriteBatch.DrawString(font, "However, greedy BIO Agents began hunting down these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
                 spriteBatch.DrawString(font, "As more Harmonians die off, the music is disappearing...", new Vector2(140, 170), Color.White* opacity4);
                 spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity5);
             }
