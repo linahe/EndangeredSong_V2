@@ -270,7 +270,7 @@ namespace EndangeredSong
                         opacityWon1 = opacityWon1 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         firstWonDone = true;
                     }
                 }
@@ -280,7 +280,7 @@ namespace EndangeredSong
                         opacityWon2 = opacityWon2 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         secondWonDone = true;
                     }
                 }
