@@ -59,7 +59,7 @@ namespace EndangeredSong
         private bool onMainGame = false;
         private bool onWinScreen = false;
 
-        private int animator = -1000;
+        private int animator = -2000;
         public ScreenManager(int x, int y, int width, int height)
         {
             this.pos.X = x;
@@ -313,7 +313,7 @@ namespace EndangeredSong
             if (onNarrative)
             {
                 spriteBatch.Draw(narrative1, rect, Color.White * opacity3);
-                spriteBatch.Draw(mist, new Rectangle(animator++, 0, 3000, this.activeScreen.Height*2), Color.White * 0.2f);
+                spriteBatch.Draw(mist, new Rectangle(animator++, 0, 4000, this.activeScreen.Height*2), Color.White * 0.2f);
                 spriteBatch.DrawString(font, "There was once a time when the musical Harmonians were happy.", new Vector2(50, 50), Color.White * opacity1);
                 spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
                 spriteBatch.DrawString(font, "However, greedy BIO Agents began hunting down these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
