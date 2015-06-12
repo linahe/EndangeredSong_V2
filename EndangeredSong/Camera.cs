@@ -26,14 +26,14 @@ namespace EndangeredSong
 
             center = new Vector2();
 
-            if (player.getPosition().X + player.getDimension().X / 2 >= screenWidth / 2 && player.getPosition().X + player.getDimension().X / 2 <= mapX - screenWidth / 2)
+            if ((player.getPosition().X + player.getDimension().X / 2) + 20  >= screenWidth / 2 && player.getPosition().X + player.getDimension().X / 2 <= mapX - screenWidth / 2)
             {
-                center.X = player.getPosition().X + (player.getDimension().X / 2) - (screenWidth / 2);
+                center.X = player.getPosition().X + (player.getDimension().X / 2) - (screenWidth / 2) ;
             }
 
-            else if (player.getPosition().X + player.getDimension().X / 2 < screenWidth/2)
+            else if (((player.getPosition().X + player.getDimension().X /2) + 20 ) < screenWidth / 2) //+ player.getDimension().X / 2
             {
-                center.X = 0;
+                center.X = -20;
             }
 
             else 
@@ -49,7 +49,7 @@ namespace EndangeredSong
 
             else if (player.getPosition().Y + player.getDimension().Y / 2 < screenHeight / 2)
             {
-                center.Y = 0;
+                center.Y = -30;
             }
 
             else
