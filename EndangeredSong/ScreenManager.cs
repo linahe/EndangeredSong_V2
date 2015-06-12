@@ -17,12 +17,14 @@ namespace EndangeredSong
         private bool secondDone = false;
         private bool thirdDone = false;
         private bool fourthDone = false;
+        private bool fifthDone = false;
         private float animationTimer = 2;
         private float opacity1 = 0.0f;
         private float opacity2 = 0.0f;
         private float opacity3 = 0.0f;
         private float opacity4 = 0.0f;
         private float opacity5 = 0.0f;
+        private float opacity6 = 0.0f;
         private bool oscillation = false;
         SpriteFont font;
 
@@ -179,18 +181,23 @@ namespace EndangeredSong
                         fourthDone = true;
                     }
                 }
-                else if(animationTimer <= 0 && fourthDone == true)
+                else if (animationTimer <= 0 && fifthDone == false)
+                {
+                    if (opacity5 <= 1.0)
+                        opacity5 = opacity5 + 0.1f;
+                }
+                else if (animationTimer <= 0 && fifthDone == true) ;
                 {
                     if (oscillation == false)
                     {
-                        opacity5 = opacity5 + 0.02f;
-                        if (opacity5 > 1.0)
+                        opacity6 = opacity6 + 0.02f;
+                        if (opacity6 > 1.0)
                             oscillation = true;
                     }
                     else if(oscillation == true)
                     {
-                        opacity5 = opacity5 - 0.02f;
-                        if (opacity5 < 0)
+                        opacity6 = opacity6 - 0.02f;
+                        if (opacity6 < 0)
                             oscillation = false;
                     }
                 }
@@ -228,7 +235,8 @@ namespace EndangeredSong
                 spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
                 spriteBatch.DrawString(font, "However, greedy BIO Agents began hunting down these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
                 spriteBatch.DrawString(font, "As more Harmonians die off, the music is disappearing...", new Vector2(140, 170), Color.White* opacity4);
-                spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity5);
+                spriteBatch.DrawString(font, "Please... save the Endangered Song...", new Vector2(170, 210), Color.White * opacity5);
+                spriteBatch.DrawString(font, "Press SPACE to continue...", new Vector2(750, 550), Color.White * opacity6);
             }
         }
         public void CenterElement(int height, int width)

@@ -290,7 +290,7 @@ namespace EndangeredSong
             }
             else
             {
-                spriteBatch.Draw(landscape, new Rectangle(-800, -500, 5000, 6000), Color.White);
+                spriteBatch.Draw(landscape, new Rectangle(-800, -500, 6000, 6000), Color.White);
                 spriteBatch.Draw(endPlace, endPlaceRect, Color.White);
 
                 for (int j = 0; j < decorations.Count; j++)
