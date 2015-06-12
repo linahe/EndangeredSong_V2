@@ -52,7 +52,7 @@ namespace EndangeredSong
         Texture2D landscape;
         Texture2D legend;
         int time = -1;
-        SoundEffect song1;
+//        SoundEffect song1;
 
 
         public Game1()
@@ -89,9 +89,9 @@ namespace EndangeredSong
             landscape = Content.Load<Texture2D>("landscape.png");
             legend = Content.Load<Texture2D>("legend.png");
 
-            coordPlaces = new int[14, 3] { { 250, 2400, 3 }, { 700, 2200, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1400, 2500, 3} , { 2000, 2200, 2 }, {2400, 2100, 2},  {2400, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
-                                         {3600, 1300, 3 } , { 3600, 2800, 2} ,{ 3800, 2500, 2} };
-            coordWater = new int[10, 2] { { 800, 2700 }, { 2000, 2600 } , {3600, 600} , {4000, 700} , { 1250 , 1100 } , {900, 1000} , { 1500 , 1200 } , { 700, 500 } , {350, 600} , {1800, 1000} };
+            coordPlaces = new int[14, 3] { { 250, 2400, 3 }, { 700, 2200, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1400, 2500, 3} , { 2000, 2200, 2 }, {2400, 2100, 2},  {2200, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
+                                         {3600, 1300, 2 } , { 3600, 2800, 2} ,{ 3800, 2500, 2} };
+            coordWater = new int[14, 2] { { 800, 2700 }, { 2000, 2600 } , {3600, 600} , {4000, 700} , { 1250 , 1100 } , {900, 1000} , { 1500 , 1200 } , { 700, 500 } , {350, 600} , {1800, 1000} , {2200, 1400} , {3000, 900} , {2500, 800} , { 3100 , 200 } };
             player = new Player(300, 2100, harmoniansizeX, harmoniansizeY, dimX, dimY);
             b1 = new BIOAgent(300, 2100, 200, 350, dimX, dimY);
             manager = new ScreenManager(0, 0, screenWidth, screenHeight);
@@ -126,7 +126,7 @@ namespace EndangeredSong
                 p = new HidingPlace(coordPlaces[i, 0], coordPlaces[i, 1], x, y, coordPlaces[i, 2]);
                 hidingPlaces.Add(p);
             }
-            for (int k = 0; k < 10; k++)
+            for (int k = 0; k < 14; k++)
             {
                 Water w = new Water(coordWater[k,0], coordWater[k,1], 450, 200);
                 water.Add(w);
