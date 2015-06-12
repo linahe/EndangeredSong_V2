@@ -179,7 +179,7 @@ namespace EndangeredSong
                         opacity1 = opacity1 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         firstDone = true;
                     }
                 }
@@ -189,7 +189,7 @@ namespace EndangeredSong
                         opacity2 = opacity2 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         secondDone = true;
                     }
                 }
@@ -199,7 +199,7 @@ namespace EndangeredSong
                         opacity3 = opacity3 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         thirdDone = true;
                     }
                 }
@@ -209,7 +209,7 @@ namespace EndangeredSong
                         opacity4 = opacity4 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         fourthDone = true;
                     }
                 }
@@ -219,7 +219,7 @@ namespace EndangeredSong
                         opacity5 = opacity5 + 0.1f;
                     else
                     {
-                        animationTimer = 2;
+                        animationTimer = 1;
                         fifthDone = true;
                     }
                 }
