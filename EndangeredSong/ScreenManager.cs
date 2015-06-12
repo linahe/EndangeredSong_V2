@@ -217,8 +217,13 @@ namespace EndangeredSong
                 {
                     if (opacity5 <= 1.0)
                         opacity5 = opacity5 + 0.1f;
+                    else
+                    {
+                        animationTimer = 2;
+                        fifthDone = true;
+                    }
                 }
-                else if (animationTimer <= 0 && fifthDone == true) ;
+                else if (animationTimer <= 0 && fifthDone == true)
                 {
                     if (oscillation == false)
                     {

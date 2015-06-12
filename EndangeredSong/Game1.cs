@@ -31,7 +31,6 @@ namespace EndangeredSong
         ArrayList decorations;
         ArrayList water;
 
-
         SoundEffectInstance songInstance;
         Player player;
         BIOAgent b1;
@@ -91,7 +90,6 @@ namespace EndangeredSong
             water = new ArrayList();
             landscape = Content.Load<Texture2D>("landscape.png");
             legend = Content.Load<Texture2D>("legend.png");
-
             coordPlaces = new int[14, 3] { { 250, 2400, 3 }, { 700, 2200, 3 }, { 1050, 1500, 2 }, { 1300, 600, 3 },  {1400, 2500, 3} , { 2000, 2200, 2 }, {2400, 2100, 2},  {2200, 200, 2}, {2750, 2500, 3}, { 2900, 1500, 3 },  {3000, 600, 2 }  ,
                                          {3600, 1300, 2 } , { 3600, 2800, 2} ,{ 3800, 2500, 2} };
             coordWater = new int[14, 2] { { 800, 2700 }, { 2000, 2600 } , {3600, 600} , {4000, 700} , { 1250 , 1100 } , {900, 1000} , { 1500 , 1200 } , { 700, 500 } , {350, 600} , {1800, 1000} , {2200, 1400} , {3000, 900} , {2500, 800} , { 3100 , 200 } };
@@ -233,7 +231,7 @@ namespace EndangeredSong
                
                 if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
                 {
-                    manager.setToGameWon(player.getTotalDiscovered());
+                    manager.setToGameWon(player.getNumFound());
 //                    song1.Dispose();
 //                    bioTrouble.Dispose();
                 }
@@ -253,7 +251,6 @@ namespace EndangeredSong
                     //bioTrouble.Play();
                     b1.spawn(player);
                 }
-
                 if (elapsedTime >= 15) 
                 {
                     b1.disactivate();
