@@ -107,7 +107,7 @@ namespace EndangeredSong
             
             if (harmonians == 0)
             {
-                animationTimer = 2;
+                animationTimer = 1;
                 activeScreen = gameWon1;
                 onGameWon1 = true;
             }
