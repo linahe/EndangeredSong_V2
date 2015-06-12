@@ -57,7 +57,7 @@ namespace EndangeredSong
         int time = -1;
 //        SoundEffect song1;
 
-
+        Texture2D sunlight;
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -82,7 +82,7 @@ namespace EndangeredSong
             dimX = GraphicsDevice.Viewport.Bounds.Width;
             dimY = GraphicsDevice.Viewport.Bounds.Height;
 
-
+          
             
             endPlaceRect = new Rectangle(3800, 200, 200, 200);
             harmonians = new ArrayList();
@@ -178,6 +178,7 @@ namespace EndangeredSong
             Content.RootDirectory = "Content";
             spriteBatch = new SpriteBatch(GraphicsDevice);
             font = Content.Load<SpriteFont>("font");
+            sunlight = Content.Load<Texture2D>("sunlight");
             
             b1.LoadContent(this.Content);
             player.LoadContent(this.Content);
@@ -305,10 +306,10 @@ namespace EndangeredSong
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
                 spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 125), Color.White);
                 spriteBatch.DrawString(font, "Score: " + player.getTotalDiscovered() * 100, new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.White);
-
+                spriteBatch.Draw(sunlight, new Rectangle((int)camera.center.X, (int)camera.center.Y, screenWidth, screenHeight), Color.Yellow*0.2f);
                 if(elapsedTime >= 5 && elapsedTime < 8)
                 {
-                    spriteBatch.DrawString(font, "A BIOAgent is coming! HIDE!" , new Vector2(camera.center.X + 400, camera.center.Y + 100), Color.Red);
+                    spriteBatch.DrawString(font, "A BIO Agent is coming! HIDE!" , new Vector2(camera.center.X + 400, camera.center.Y + 100), Color.Red);
                     spriteBatch.DrawString(font, "Time Left :" + Math.Ceiling(8 - elapsedTime), new Vector2(camera.center.X + 450, camera.center.Y + 150), Color.Red);
 
                 }

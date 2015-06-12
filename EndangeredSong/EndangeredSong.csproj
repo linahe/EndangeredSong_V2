@@ -201,6 +201,9 @@
     <Content Include="Content\sprite.gif">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Content\sunlight.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\Water.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
