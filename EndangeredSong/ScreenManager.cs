@@ -24,6 +24,7 @@ namespace EndangeredSong
         private bool onInstructions = false;
         private bool onMainMenu = true;
         private bool onMainGame = false;
+        private bool onWinScreen = false;
 
         public ScreenManager(int x, int y, int width, int height)
         {
@@ -57,6 +58,7 @@ namespace EndangeredSong
         {
             activeScreen = gameWon;
             onMainGame = false;
+            onWinScreen = true;
         }
         public void setToInstructions()
         {
@@ -72,6 +74,10 @@ namespace EndangeredSong
         public bool isOnMainGame()
         {
             return this.onMainGame;
+        }
+        public bool isOnWinScreen()
+        {
+            return this.onWinScreen;
         }
         public void switchInstructions()
         {

@@ -18,6 +18,7 @@ namespace EndangeredSong
         int maxX;
         int maxY;
         int numFound;
+        int totalDiscovered;
         Texture2D image;
         bool dead;
         Vector2 origin;
@@ -46,6 +47,10 @@ namespace EndangeredSong
         {
             return this.numFound;
         }
+        public int getTotalDiscovered()
+        {
+            return this.totalDiscovered;
+        }
         public Vector2 getFollowingPosition(int x)
         {
             return new Vector2(followingPositions[x, 0], followingPositions[x, 1]);
@@ -66,6 +71,7 @@ namespace EndangeredSong
         public void foundHarmonian()
         {
             this.numFound++;
+            this.totalDiscovered++;
         }
         public void Hide()
         {

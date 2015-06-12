@@ -50,9 +50,10 @@ namespace EndangeredSong
         Rectangle endPlaceRect;
         Texture2D landscape;
         Texture2D legend;
-
+        int time = -1;
         SoundEffect song1;
-        
+
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -239,7 +240,7 @@ namespace EndangeredSong
                 }
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
-                if (elapsedTime >= 5 && !b1.isOnScreen() ) // add bool?
+                if (elapsedTime >= 8 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
                     songInstance.Volume = 0;
@@ -247,7 +248,7 @@ namespace EndangeredSong
                     b1.spawn(player);
                 }
 
-                if (elapsedTime >= 12) 
+                if (elapsedTime >= 15) 
                 {
                     b1.disactivate();
                     songInstance.Volume = 1;
@@ -270,7 +271,17 @@ namespace EndangeredSong
             spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, null, null, null, null, camera.transform);
 
             if (!manager.isOnMainGame() || player.isDead())
+            {
                 manager.Draw(spriteBatch);
+                if(manager.isOnWinScreen())
+                {
+                    int score = player.getTotalDiscovered() * 100;
+                    if(time == -1)
+                        time = gameTime.TotalGameTime.Seconds;
+                    spriteBatch.DrawString(font, "Score: " + score, new Vector2(screenWidth/2 - 200, screenHeight/2 - 100), Color.Black);
+                    spriteBatch.DrawString(font, "Time Elapsed: " + time, new Vector2(screenWidth/2 - 200, screenHeight/2 - 50), Color.Black);
+                }
+            }
             else
             {
                 spriteBatch.Draw(landscape, new Rectangle(-500, -500, 5000, 6000), Color.White);
@@ -288,8 +299,14 @@ namespace EndangeredSong
                 player.Draw(spriteBatch);
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
                 spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 200), Color.White);
-                spriteBatch.DrawString(font, "Score: " + player.getNumFound(), new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.Black);
+                spriteBatch.DrawString(font, "Score: " + player.getTotalDiscovered() * 100, new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.Black);
 
+                if(elapsedTime >= 5 && elapsedTime < 8)
+                {
+                    spriteBatch.DrawString(font, "A BIOAgent is coming! HIDE!" , new Vector2(camera.center.X + 400, camera.center.Y + 100), Color.Red);
+                    spriteBatch.DrawString(font, "Time Left :" + Math.Ceiling(8 - elapsedTime), new Vector2(camera.center.X + 450, camera.center.Y + 150), Color.Red);
+
+                }
 
             }
                         
