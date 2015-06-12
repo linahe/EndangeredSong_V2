@@ -54,7 +54,7 @@ namespace EndangeredSong
         Texture2D landscape;
         Texture2D legend;
         int time = -1;
-//        SoundEffect song1;
+        SoundEffect song1;
 
         Texture2D sunlight;
         public Game1()
@@ -154,15 +154,15 @@ namespace EndangeredSong
             Harmonian h10 = new Harmonian(500, 300, harmoniansizeX, harmoniansizeY, dimX, dimY, "Harmonian11");
             harmonians.Add(h10);
 
-            //song1 = Content.Load<SoundEffect>(@"1Music");
+            song1 = Content.Load<SoundEffect>(@"1Music");
 
-            //songInstance = song1.CreateInstance();
-            //songInstance.IsLooped = true;
-            //songInstance.Play();
-            //death = Content.Load<SoundEffect>(@"death");
-            //deathInstance = death.CreateInstance();
-            //BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
-            //bioTrouble = BIOAgentTheme.CreateInstance();
+            songInstance = song1.CreateInstance();
+            songInstance.IsLooped = true;
+            songInstance.Play();
+            death = Content.Load<SoundEffect>(@"death");
+            deathInstance = death.CreateInstance();
+            BIOAgentTheme = Content.Load<SoundEffect>(@"BIOAgents");
+            bioTrouble = BIOAgentTheme.CreateInstance();
             
             base.Initialize();
         }
@@ -232,30 +232,30 @@ namespace EndangeredSong
                 if (player.intersects(new Vector2(endPlaceRect.X, endPlaceRect.Y), new Vector2(endPlaceRect.Width, endPlaceRect.Height))) 
                 {
                     manager.setToGameWon(player.getNumFound());
-//                    song1.Dispose();
-//                    bioTrouble.Dispose();
+                    song1.Dispose();
+                    bioTrouble.Dispose();
                 }
                 if(player.isDead()) 
                 {
-//                    deathInstance.Play();
+                    deathInstance.Play();
                     manager.setToGameOver();
-//                    song1.Dispose();
-//                    bioTrouble.Dispose();
+                    song1.Dispose();
+                    bioTrouble.Dispose();
                 }
 
                 elapsedTime += gameTime.ElapsedGameTime.TotalSeconds;
                 if (elapsedTime >= 8 && !b1.isOnScreen() ) // add bool?
                 {
                     b1.activate();
-                    //songInstance.Volume = 0;
-                    //bioTrouble.Play();
+                    songInstance.Volume = 0;
+                    bioTrouble.Play();
                     b1.spawn(player);
                 }
                 if (elapsedTime >= 15) 
                 {
                     b1.disactivate();
-                    //songInstance.Volume = 1;
-                    //bioTrouble.Stop();
+                    songInstance.Volume = 1;
+                    bioTrouble.Stop();
                     elapsedTime = 0;
                 }
                 
@@ -280,7 +280,7 @@ namespace EndangeredSong
                 {
                     int score = player.getTotalDiscovered() * 100;
                     if(time == -1)
-                        time = gameTime.TotalGameTime.Seconds;
+                        time = gameTime.TotalGameTime.Seconds + gameTime.TotalGameTime.Minutes * 60;
                     spriteBatch.DrawString(font, "Score: " + score, new Vector2(screenWidth/2 - 200, screenHeight/2 - 100), Color.Black);
                     spriteBatch.DrawString(font, "Time Elapsed: " + time + " seconds", new Vector2(screenWidth/2 - 200, screenHeight/2 - 50), Color.Black);
                 }

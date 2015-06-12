@@ -50,9 +50,9 @@ namespace EndangeredSong
         {
             image = content.Load<Texture2D>("Harmonian.png");
             song = content.Load<SoundEffect>(@songName);
-//            s = song.CreateInstance();
-            //s.Volume = 0;
-            //s.Play();
+            s = song.CreateInstance();
+            s.Volume = 0;
+            s.Play();
         }
 
         public bool isFound()
@@ -96,15 +96,15 @@ namespace EndangeredSong
             
             if (timer < 0)
             { 
-//                s.Play();
+                s.Play();
                 timer = TIMER;
             }
             if (this.found && !b.isActive)
             {
-//                s.Volume = 1;
+                s.Volume = 1;
             }
-//            if (b.isActive || player.isDead())
-//                s.Volume = 0;
+            if (b.isActive || player.isDead())
+                s.Volume = 0;
             }
 
         public void Move(Controls controls, Player player)

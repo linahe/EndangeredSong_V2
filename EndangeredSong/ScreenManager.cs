@@ -27,8 +27,6 @@ namespace EndangeredSong
         private float opacity6 = 0.0f;
 
         private bool firstWonDone = false;
-        private bool secondWonDone = false;
-        private bool thirdWonDone = false;
         private float opacityWon1 = 0.0f;
         private float opacityWon2 = 0.0f;
         private float opacityWon3 = 0.0f;
@@ -71,6 +69,7 @@ namespace EndangeredSong
         {
             mainMenu = content.Load<Texture2D>("menubackground");
             narrative1 = content.Load<Texture2D>("narrative");
+            narrative2 = content.Load<Texture2D>("narrative2");
             gameOver = content.Load<Texture2D>("GameOverScreen");
             gameWon1 = content.Load<Texture2D>("winscreen1");
             gameWon1a = content.Load<Texture2D>("winscreen1a");
@@ -98,7 +97,7 @@ namespace EndangeredSong
         public void setToNarrative()
         {
             //This I have to look at later. It's INCOMPLETE
-            activeScreen = narrative1;
+            activeScreen = narrative2;
             onMainMenu = false;
             onNarrative = true;
         }
@@ -281,7 +280,6 @@ namespace EndangeredSong
                     else
                     {
                         animationTimer = 1;
-                        secondWonDone = true;
                     }
                 }
 
@@ -311,6 +309,7 @@ namespace EndangeredSong
             spriteBatch.Draw(activeScreen, rect, Color.White);
             if (onNarrative)
             {
+                spriteBatch.Draw(narrative1, rect, Color.White * opacity3);
                 spriteBatch.DrawString(font, "There was once a time when the musical Harmonians were happy.", new Vector2(50, 50), Color.White * opacity1);
                 spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
                 spriteBatch.DrawString(font, "However, greedy BIO Agents began hunting down these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
