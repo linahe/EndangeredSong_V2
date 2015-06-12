@@ -279,3 +279,4 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\Endangere
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\landscape.png
 C:\Users\Liuli\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\legend.png
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction4.png
+C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative.png

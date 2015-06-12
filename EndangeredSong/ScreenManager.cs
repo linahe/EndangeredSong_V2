@@ -11,7 +11,18 @@ namespace EndangeredSong
 {
     class ScreenManager:Sprite
     {
-       
+        private Texture2D narrative1;
+        bool firstDone = false;
+        bool secondDone = false;
+        bool thirdDone = false;
+        bool fourthDone = false;
+        private float animationTimer = 2;
+        private float opacity1 = 0.0f;
+        private float opacity2 = 0.0f;
+        private float opacity3 = 0.0f;
+        private float opacity4 = 0.0f;
+        SpriteFont font;
+
         private Texture2D mainMenu;
         private Texture2D gameOver;
         private Texture2D gameWon;
@@ -24,6 +35,7 @@ namespace EndangeredSong
         private float timer = 0.8f;
         private bool onInstructions = false;
         private bool onMainMenu = true;
+        private bool onNarrative = false;
         private bool onMainGame = false;
         private bool onWinScreen = false;
 
@@ -37,12 +49,14 @@ namespace EndangeredSong
         public void LoadContent(ContentManager content)
         {
             mainMenu = content.Load<Texture2D>("menubackground");
+            narrative1 = content.Load<Texture2D>("narrative");
             gameOver = content.Load<Texture2D>("GameOverScreen");
             gameWon = content.Load<Texture2D>("winscreen");
             instructions1 = content.Load<Texture2D>("instruction1");
             instructions2 = content.Load<Texture2D>("instruction2");
             instructions3 = content.Load<Texture2D>("instruction3");
             instructions4 = content.Load<Texture2D>("instruction4");
+            font = content.Load<SpriteFont>("font");
             rect = new Rectangle((int)pos.X, (int)pos.Y, (int)dim.X, (int)dim.Y);
             activeScreen = mainMenu;
         }
@@ -56,6 +70,13 @@ namespace EndangeredSong
             activeScreen = gameOver;
             onMainGame = false;
         }
+        public void setToNarrative()
+        {
+            //This I have to look at later. It's INCOMPLETE
+            activeScreen = narrative1;
+            onMainMenu = false;
+            onNarrative = true;
+        }
         public void setToGameWon()
         {
             activeScreen = gameWon;
@@ -67,11 +88,13 @@ namespace EndangeredSong
             activeScreen = instructions1;
             onInstructions = true;
             onMainMenu = false;
+            onNarrative = false;
         }
         public void setToMainGame()
         {
             onMainGame = true;
             onInstructions = false;
+            onNarrative = false;
         }
         public bool isOnMainGame()
         {
@@ -89,13 +112,65 @@ namespace EndangeredSong
                 this.activeScreen = instructions1;
             else return;
         }
+        public void increaseOpacity(float opacity, float time, bool done)
+        {
+            if (opacity <= 1.0f)
+                opacity = opacity1 + 0.2f;
+            else
+            {
+                time = 3;
+                done = true;
+            }
+        }
         public void Update(GameTime gameTime, Controls controls)
         {
             if(onMainMenu)
             {
                 if (controls.onRelease(Keys.Space, Buttons.A))
-                    this.setToInstructions();
+                    this.setToNarrative();
 
+            }
+            else if(onNarrative)
+            {
+                float elapsed = (float)gameTime.ElapsedGameTime.TotalSeconds;
+                animationTimer -= elapsed;
+                if (animationTimer <= 0 && firstDone == false)
+                {
+                    if (opacity1 <= 1.0f)
+                        opacity1 = opacity1 + 0.2f;
+                    else
+                    {
+                        animationTimer = 3;
+                        firstDone = true;
+                    }
+                }
+                else if (animationTimer <= 0 && secondDone == false)
+                {
+                    if (opacity2 <= 1.0f)
+                        opacity2 = opacity2 + 0.2f;
+                    else
+                    {
+                        animationTimer = 3;
+                        secondDone = true;
+                    }
+                }
+                else if (animationTimer <= 0 && thirdDone == false)
+                {
+                    if (opacity3 <= 1.0f)
+                        opacity3 = opacity3 + 0.2f;
+                    else
+                    {
+                        animationTimer = 3;
+                        thirdDone = true;
+                    }
+                }
+                else if (animationTimer <= 0 && fourthDone == false)
+                {
+                    if (opacity4 <= 1.0)
+                        opacity4 = opacity4 + 0.2f;
+                }
+                if (controls.onRelease(Keys.Space, Buttons.A))
+                    this.setToInstructions();
             }
             else if(onInstructions)
             {
@@ -122,6 +197,13 @@ namespace EndangeredSong
         public void Draw(SpriteBatch spriteBatch)
         {
             spriteBatch.Draw(activeScreen, rect, Color.White);
+            if (onNarrative)
+            {
+                spriteBatch.DrawString(font, "There was once a time when the musical Harmonians were happy.", new Vector2(50, 50), Color.White * opacity1);
+                spriteBatch.DrawString(font, "They would sing and travel together in herds.", new Vector2(80, 90), Color.White * opacity2);
+                spriteBatch.DrawString(font, "However, greedy humans began exploiting these peaceful aliens.", new Vector2(110, 130), Color.White * opacity3);
+                spriteBatch.DrawString(font, "As more Harmonians die off, the music is disappearing...", new Vector2(140, 170), Color.White* opacity4);
+            }
         }
         public void CenterElement(int height, int width)
         {
