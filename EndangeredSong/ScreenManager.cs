@@ -274,7 +274,7 @@ namespace EndangeredSong
                         firstWonDone = true;
                     }
                 }
-                else if (animationTimer <= 0 && firstWonDone)
+                else if (animationTimer <= 0)
                 {
                     if (opacity2 <= 1.0)
                         opacityWon2 = opacityWon2 + 0.1f;
