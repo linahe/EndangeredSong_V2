@@ -299,8 +299,8 @@ namespace EndangeredSong
                 b1.Draw(spriteBatch);
                 player.Draw(spriteBatch);
                 map.Draw(spriteBatch, (int)camera.center.X + screenWidth - 200, (int)camera.center.Y);
-                spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 200), Color.White);
-                spriteBatch.DrawString(font, "Score: " + player.getTotalDiscovered() * 100, new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.Black);
+                spriteBatch.Draw(legend, new Rectangle((int)camera.center.X + screenWidth - 200, (int)camera.center.Y + 150, 200, 125), Color.White);
+                spriteBatch.DrawString(font, "Score: " + player.getTotalDiscovered() * 100, new Vector2(camera.center.X + 20, camera.center.Y + 20), Color.White);
 
                 if(elapsedTime >= 5 && elapsedTime < 8)
                 {
