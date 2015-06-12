@@ -181,16 +181,19 @@ namespace EndangeredSong
                         break;
                 }
 
-                if (wanderDirection.X > 0)
-                    flipped = true;
-                else
-                    flipped = false;
+                
             }
             else
             {
                 this.pos += wanderDirection * 5;
 
             }
+
+            if (wanderDirection.X > 0)
+                flipped = true;
+            else
+                flipped = false;
+            
         }
     }
 }
