@@ -274,7 +274,7 @@ namespace EndangeredSong
                         firstWonDone = true;
                     }
                 }
-                else if (animationTimer <= 0 && !secondWonDone)
+                else if (animationTimer <= 0 && firstWonDone)
                 {
                     if (opacity2 <= 1.0)
                         opacityWon2 = opacityWon2 + 0.1f;
@@ -284,16 +284,7 @@ namespace EndangeredSong
                         secondWonDone = true;
                     }
                 }
-                else if (animationTimer <= 0 && !thirdWonDone)
-                {
-                    if (opacity3 <= 1.0)
-                        opacityWon3 = opacityWon3 + 0.1f;
-                    else
-                    {
-                        animationTimer = 2;
-                        thirdWonDone = true;
-                    }
-                }
+
 
             }
             else if (onGameWon2)
