@@ -18,7 +18,7 @@ namespace EndangeredSong
         private bool thirdDone = false;
         private bool fourthDone = false;
         private bool fifthDone = false;
-        private float animationTimer = 2;
+        private float animationTimer = 1;
         private float opacity1 = 0.0f;
         private float opacity2 = 0.0f;
         private float opacity3 = 0.0f;
