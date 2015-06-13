@@ -289,3 +289,23 @@ C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\Endangere
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\canary.wav
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative2.png
 C:\Users\Owner\Documents\Visual Studio 2013\Projects\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\mist.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\canary.wav
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\death.wav
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\GameOverScreen.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction3.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction4.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\landscape.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\mist.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\narrative2.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\sunlight.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winningsunlight.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1a.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\winscreen1b.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\font.spritefont
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\font.xnb
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction1.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\instruction2.png
+C:\Users\Lina\Documents\GitHub\EndangeredSong_V2\EndangeredSong\bin\WindowsGL\Debug\Content\legend.png

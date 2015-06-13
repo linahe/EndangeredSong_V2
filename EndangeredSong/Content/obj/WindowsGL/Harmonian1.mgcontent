@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>C:/Users/Owner/Documents/Visual Studio 2013/Projects/EndangeredSong_V2/EndangeredSong/Content/Harmonian1.mp3</SourceFile>
-  <SourceTime>2015-06-12T14:12:48.3990474-04:00</SourceTime>
-  <DestFile>C:/Users/Owner/Documents/Visual Studio 2013/Projects/EndangeredSong_V2/EndangeredSong/Content/bin/WindowsGL/Harmonian1.xnb</DestFile>
-  <DestTime>2015-06-12T14:13:50.2748594-04:00</DestTime>
+  <SourceFile>C:/Users/Lina/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/Harmonian1.mp3</SourceFile>
+  <SourceTime>2015-06-12T12:52:16.1149698-04:00</SourceTime>
+  <DestFile>C:/Users/Lina/Documents/GitHub/EndangeredSong_V2/EndangeredSong/Content/bin/WindowsGL/Harmonian1.xnb</DestFile>
+  <DestTime>2015-06-13T12:24:27.0359106-04:00</DestTime>
   <Importer>Mp3Importer</Importer>
   <ImporterTime>2015-04-29T13:14:44-04:00</ImporterTime>
   <Processor>SoundEffectProcessor</Processor>

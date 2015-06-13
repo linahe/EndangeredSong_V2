@@ -137,7 +137,7 @@ namespace EndangeredSong
             if (distance > 10 && distance < 1000 && !player.isHidden())
             {
                 direction.Normalize();
-                this.pos = this.pos + direction * 6;
+                this.pos = this.pos + direction * 7;
 
                 if (direction.X > 0)
                 flipped = true;
